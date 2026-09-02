@@ -1,0 +1,15 @@
+# Install a CUDA-compatible PyTorch build first when deploying on a GPU server.
+# See https://pytorch.org/get-started/locally/ for the matching command.
+torch>=2.4
+transformers>=4.57
+accelerate>=1.0
+qwen-vl-utils>=0.0.14
+gradio>=6.0
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.0
+openai>=1.0
+pillow>=10.0
+
+# Video decoding backend used by qwen-vl-utils.
+av>=12.0
