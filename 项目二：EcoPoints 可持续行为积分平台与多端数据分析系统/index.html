@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPoints | Ecological Operations Console</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/vendor/echarts.min.js" defer></script>
+  <script src="dashboard.js" defer></script>
+  
+  
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="eco-sandbox-container"><div class="eco-sandbox"></div></div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 1: LOGIN SECTION (Active by default)  -->
+  <!-- ========================================== -->
+  <section id="loginPage" class="page-view active">
+    <div class="login-container">
+      
+      <!-- LEFT SIDE: Hero Section -->
+      <main class="hero-section">
+        <div class="brand">
+          <div class="logo-icon">
+            <i data-lucide="leaf"></i>
+          </div>
+          <span class="brand-name">EcoPoints</span>
+        </div>
+
+        <div class="hero-content">
+          <h1 class="hero-title">
+            People.<br>
+            Progress.<br>
+            <span class="highlight">A Greener Tomorrow.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Join a community of students and employees making a real difference through sustainable choices, everyday.
+          </p>
+
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon icon-green">
+                <i data-lucide="leaf"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Take action</h4>
+                <p>Sustainable transport, energy saving and more.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon icon-teal">
+                <i data-lucide="users"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Earn rewards</h4>
+                <p>Get EcoPoints for positive choices.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon icon-emerald">
+                <i data-lucide="trending-up"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Create impact</h4>
+                <p>Greener campuses and healthier communities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- RIGHT SIDE: Login Card Area -->
+      <aside class="auth-section">
+        <div class="login-card">
+          <div class="card-brand">
+            <div class="logo-icon small">
+              <i data-lucide="leaf"></i>
+            </div>
+            <span class="brand-name">EcoPoints</span>
+          </div>
+
+          <h2 class="card-title">
+            Welcome back — <br>
+            <span class="green-text">continue your sustainability journey.</span>
+          </h2>
+          <p class="card-subtitle">
+            Sign in to track your activity, earn rewards, and make a bigger impact together.
+          </p>
+
+          <form id="loginForm" class="login-form">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div class="input-wrapper">
+                <i data-lucide="mail" class="input-icon"></i>
+                <input type="email" id="email" placeholder="name@university.edu" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-wrapper">
+                <i data-lucide="lock" class="input-icon"></i>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <button type="button" id="togglePassword" class="toggle-password" aria-label="Toggle password visibility">
+                  <i data-lucide="eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="rememberMe">
+                <span class="custom-checkbox"></span>
+                Remember me
+              </label>
+              <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              Sign In <i data-lucide="arrow-right"></i>
+            </button>
+          </form>
+
+          <div class="divider">
+            <span>or</span>
+          </div>
+
+          <button class="btn-sso" id="googleSignInBtn">
+            <svg class="google-icon" width="18" height="18" viewBox="0 0 18 18">
+              <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/>
+              <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+              <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
+              <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+            </svg>
+            Sign in with Google
+          </button>
+
+          <p class="demo-link">
+            New to EcoPoints? <a href="#" id="registerLink">Create an account <i data-lucide="arrow-right"></i></a>
+          </p>
+          <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div id="subscriptionModal" class="subscription-modal" hidden role="dialog" aria-modal="true" aria-labelledby="subscriptionTitle">
+    <div class="subscription-backdrop" data-close-subscription></div>
+    <div class="subscription-dialog">
+      <button type="button" class="subscription-close" data-close-subscription aria-label="Close subscription plans"><i data-lucide="x"></i></button>
+      <div class="subscription-heading"><span class="eyebrow">PLANS</span><h2 id="subscriptionTitle">Choose the plan that fits your impact</h2><p>Start with Basic and upgrade to Plus whenever you are ready.</p></div>
+      <div class="subscription-plans">
+        <article class="subscription-plan subscription-plan-basic"><div class="subscription-plan-top"><div><span class="subscription-plan-label">Essential</span><h3>Basic</h3></div><span class="subscription-current-badge" id="basicPlanBadge">Current plan</span></div><div class="subscription-price"><strong>RM 0</strong><span>forever</span></div><ul class="subscription-feature-list" id="basicFeatureList"></ul></article>
+        <article class="subscription-plan subscription-plan-plus"><div class="subscription-shimmer"></div><div class="subscription-plan-top"><div><span class="subscription-plan-label">Expanded impact</span><h3>Plus <span class="plus-star">✦</span></h3></div><span class="subscription-plus-badge" id="plusPlanBadge">Recommended</span></div><div class="subscription-price"><strong>RM 8</strong><span>per month</span></div><ul class="subscription-feature-list" id="plusFeatureList"></ul><button type="button" class="subscription-buy-button" id="subscriptionBuyButton">Upgrade to Plus <i data-lucide="arrow-up-right"></i></button></article>
+      </div>
+      <p id="subscriptionMessage" class="subscription-message" role="status"></p>
+    </div>
+  </div>
+
+  <div id="subscriptionQrModal" class="subscription-modal subscription-qr-modal" hidden role="dialog" aria-modal="true" aria-labelledby="subscriptionQrTitle">
+    <div class="subscription-backdrop" data-close-qr></div>
+    <div class="subscription-qr-dialog"><button type="button" class="subscription-close" data-close-qr aria-label="Close QR payment"><i data-lucide="x"></i></button><div class="subscription-qr-icon"><i data-lucide="scan-line"></i></div><h2 id="subscriptionQrTitle">Complete your Plus payment</h2><p>Scan the QR code to continue. Confirm below after your payment is complete.</p><div class="subscription-qr-frame"><img src="assets/plus-payment-qr.png" alt="QR payment code for Plus subscription" onerror="this.hidden=true; this.nextElementSibling.hidden=false;"><span hidden>Payment QR code will appear here.</span></div><p class="subscription-qr-caption">RM 8 / month</p><button type="button" class="subscription-confirm-button" id="subscriptionConfirmButton">I have completed payment <i data-lucide="check"></i></button><p id="subscriptionQrMessage" class="subscription-message" role="status"></p></div>
+  </div>
+
+  <!-- PAGE: ACCOUNT PROFILE -->
+  <section id="profilePage" class="page-view">
+    <div class="utility-shell app-container">
+      <aside class="utility-sidebar sidebar"><div class="sidebar-top"><div class="brand"><div class="logo-icon"><i data-lucide="leaf"></i></div><span class="brand-name">EcoPoints</span></div><nav class="utility-nav nav-menu"><a href="#" class="nav-item" data-route="homePage"><i data-lucide="home"></i><span>Home</span></a><a href="#" class="nav-item" data-route="dashboardPage"><i data-lucide="bar-chart-2"></i><span>Dashboard</span></a><a href="#" class="nav-item" data-route="ecoPointsPage"><i data-lucide="zap"></i><span>Activity</span></a><a href="#" class="nav-item" data-route="rewardsPage"><i data-lucide="gift"></i><span>Rewards</span></a><a href="#" class="nav-item active" data-route="profilePage"><i data-lucide="user"></i><span>Profile</span></a><a href="#" class="nav-item" data-route="adminPage" data-admin-only><i data-lucide="settings"></i><span>Admin</span></a></nav></div></aside>
+      <main class="utility-main main-content"><header class="utility-header top-header"><div><span class="eyebrow">ACCOUNT</span><h1>Your profile and preferences</h1><p>Manage personal details and the way EcoPoints feels.</p></div><button id="logoutBtn" class="outline-button">Sign out</button></header><div class="utility-page-content dashboard-body"><div class="profile-layout"><article class="utility-card profile-card"><div class="profile-avatar" id="profileAvatar">ST</div><div><h2 id="profileName">Sarah Tan</h2><p id="profileEmail" class="card-muted">sarah.tan@example.edu</p></div><div class="profile-tier-summary"><span>Current plan</span><strong id="profileTierLabel">Basic</strong><button type="button" class="profile-upgrade-button" id="openSubscriptionButton"><i data-lucide="sparkles"></i>View plans</button></div><p id="profilePlusExpiry" class="card-muted"></p><div id="organizationApplySection" class="organization-apply-section"><div><h3>Organization account</h3><p>Apply to manage activities and rewards for your organization.</p></div><button type="button" class="profile-upgrade-button" id="openOrganizationApplicationButton"><i data-lucide="building-2"></i>Apply</button></div><label>Profile picture<input id="profilePictureInput" type="file" accept="image/*"></label><button id="saveProfileBtn" class="btn-primary compact-button">Save changes</button><label>Full name<input id="profileNameInput" type="text" value="Sarah Tan"></label><label>Email<input id="profileEmailInput" type="email" value="sarah.tan@example.edu"></label><label>Phone<input id="profilePhoneInput" type="tel" placeholder="Add a phone number"></label><div id="profileMessage" class="shop-message"></div></article><article class="utility-card settings-card"><h2>Preferences</h2><label>Language<select id="languageSetting"><option value="en">English</option><option value="zh">中文（简体）</option></select></label><label>Font size<select id="fontSetting"><option value="normal">Normal</option><option value="large">Large</option></select></label><label class="switch-row"><span>Dark mode</span><input id="themeSetting" type="checkbox"><span class="switch-ui"></span></label><label class="switch-row"><span>Notifications</span><input id="notificationSetting" type="checkbox" checked><span class="switch-ui"></span></label></article></div></div></main>
+    </div>
+  </section>
+
+  <!-- PAGE: ADMIN VIEW -->
+  <section id="adminPage" class="page-view">
+    <div class="utility-shell app-container"><aside class="utility-sidebar sidebar"><div class="sidebar-top"><div class="brand"><div class="logo-icon"><i data-lucide="leaf"></i></div><span class="brand-name">EcoPoints</span></div><nav class="utility-nav nav-menu"><a href="#" class="nav-item" data-route="homePage"><i data-lucide="home"></i><span>Home</span></a><a href="#" class="nav-item" data-route="dashboardPage"><i data-lucide="bar-chart-2"></i><span>Dashboard</span></a><a href="#" class="nav-item" data-route="ecoPointsPage"><i data-lucide="zap"></i><span>Activity</span></a><a href="#" class="nav-item" data-route="rewardsPage"><i data-lucide="gift"></i><span>Rewards</span></a><a href="#" class="nav-item" data-route="profilePage"><i data-lucide="user"></i><span>Profile</span></a><a href="#" class="nav-item active" data-route="adminPage" data-admin-only><i data-lucide="settings"></i><span>Admin</span></a></nav></div></aside><main class="utility-main main-content"><header class="utility-header top-header"><div><span class="eyebrow">ADMIN</span><h1>Programme controls</h1><p>Review activity, account applications, and community access.</p></div><span class="admin-badge">Administrator</span></header><div class="utility-page-content dashboard-body"><div class="admin-grid"><article class="utility-card"><h2>Programme health</h2><div class="admin-metric"><strong>68%</strong><span>Participation rate</span></div><div class="admin-metric"><strong>12,540</strong><span>EcoPoints this month</span></div><div class="admin-metric"><strong>24</strong><span>Active initiatives</span></div></article><article class="utility-card"><h2>Community publishing</h2><p class="card-muted">Create volunteering activities and rewards for the EcoPoints catalogue.</p><button class="admin-action" id="adminInitiateActivityButton"><i data-lucide="plus"></i>Initiate Activity</button><button class="admin-action" id="adminCreateRewardButton"><i data-lucide="gift"></i>Add Reward</button><div id="adminMessage" class="shop-message"></div></article></div><div class="admin-queue" id="adminQueue"><div class="utility-card"><div class="utility-card-heading"><div><h2>Review queue</h2><p class="card-muted">Approve requests, change plans, and control account access.</p></div><button type="button" class="outline-button" id="refreshAdminQueueButton"><i data-lucide="refresh-cw"></i>Refresh</button></div><div id="adminQueueContent" class="admin-queue-content"><div class="empty-state">Loading review queue...</div></div></div></div></div></main></div>
+  </section>
+
+  <div id="organizationApplicationModal" class="team-initiative-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="organizationApplicationTitle"><div class="team-initiative-form-card"><div class="team-initiative-form-header"><div><h2 id="organizationApplicationTitle">Apply for an organization account</h2><p>Upload registration evidence for administrator verification.</p></div><button type="button" class="team-close-modal-btn" data-close-organization-application aria-label="Close organization application"><i data-lucide="x"></i></button></div><form id="organizationApplicationForm"><div class="team-initiative-form-group"><label for="organizationName">Organization name</label><input id="organizationName" required minlength="2" maxlength="180"></div><div class="team-initiative-form-group"><label for="organizationRegistrationNumber">Registration number</label><input id="organizationRegistrationNumber" maxlength="120"></div><div class="team-initiative-form-group"><label for="organizationDocument">Proof document</label><input id="organizationDocument" type="file" required accept=".pdf,.docx,image/*"><small>PDF, DOCX, or image files up to 15 MB.</small></div><div class="team-initiative-form-actions"><button type="button" class="team-btn-cancel" data-close-organization-application>Cancel</button><button type="submit" class="team-btn-action">Submit application <i data-lucide="send"></i></button></div><p id="organizationApplicationMessage" class="team-initiative-message" role="status"></p></form></div></div>
+
+  <div id="notificationPopover" class="notification-popover" hidden role="dialog" aria-labelledby="notificationTitle"><div class="notification-popover-header"><div><span class="eyebrow">UPDATES</span><h2 id="notificationTitle">Notifications</h2></div><button type="button" class="modal-close" id="closeNotificationButton" aria-label="Close notifications"><i data-lucide="x"></i></button></div><div id="notificationList" class="notification-list"><div class="empty-state">Loading notifications...</div></div></div>
+
+  <div id="accountPopover" class="account-popover" hidden role="menu" aria-label="Account actions"><div class="account-popover-user"><span class="account-popover-avatar" data-user-avatar></span><span><strong class="user-name">Sarah Tan</strong><small class="user-role">Student</small></span></div><button type="button" class="account-menu-item" id="switchAccountButton" role="menuitem"><i data-lucide="users"></i><span>Switch account</span></button><button type="button" class="account-menu-item" id="addAccountButton" role="menuitem"><i data-lucide="user-plus"></i><span>Add account</span></button><button type="button" class="account-menu-item account-menu-danger" id="logoutMenuButton" role="menuitem"><i data-lucide="log-out"></i><span>Sign out</span></button></div>
+
+  <div id="accountSwitchModal" class="account-switch-modal" hidden role="dialog" aria-modal="true" aria-labelledby="accountSwitchTitle"><div class="account-switch-backdrop" data-close-account-switch></div><div class="account-switch-dialog"><button type="button" class="modal-close" data-close-account-switch aria-label="Close account switcher"><i data-lucide="x"></i></button><span class="eyebrow">ACCOUNT ACCESS</span><h2 id="accountSwitchTitle">Switch account</h2><p class="card-muted">Choose an account, then sign in to continue.</p><div id="accountList" class="account-list"></div><div id="accountSwitchLogin" class="account-switch-login" hidden><form id="accountSwitchForm"><label for="accountSwitchEmail">Email</label><input id="accountSwitchEmail" type="email" readonly><label for="accountSwitchPassword">Password</label><input id="accountSwitchPassword" type="password" required autocomplete="current-password"><button type="submit" class="btn-primary">Sign in to account <i data-lucide="arrow-right"></i></button><p id="accountSwitchMessage" class="auth-message" role="status"></p></form></div><div class="account-switch-footer"><button type="button" class="outline-button" id="accountModalAddButton"><i data-lucide="user-plus"></i>Add account</button><button type="button" class="outline-button account-delete-selected" id="accountDeleteButton" disabled><i data-lucide="trash-2"></i>Remove saved account</button></div></div></div>
+
+  <div id="adminInitiativeModal" class="team-initiative-modal admin-initiative-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="adminInitiativeTitle">
+    <div class="team-initiative-form-card">
+      <div class="team-initiative-form-header"><div><h2 id="adminInitiativeTitle">Initiate volunteering activity</h2><p>Publish a volunteering initiative for the community. Administrator accounts do not need EcoPoints.</p></div><button type="button" class="team-close-modal-btn" data-close-admin-initiative aria-label="Close activity form"><i data-lucide="x"></i></button></div>
+      <form id="adminInitiativeForm">
+        <div class="team-initiative-form-group"><label for="adminInitiativeName">Activity name</label><input id="adminInitiativeName" type="text" required minlength="2" maxlength="160" placeholder="Example: Campus Clean-Up"></div>
+        <div class="team-initiative-form-group"><label for="adminInitiativeDate">Date</label><input id="adminInitiativeDate" type="date" required></div>
+        <div class="team-initiative-form-row"><div class="team-initiative-form-group"><label for="adminInitiativeStartTime">Start time</label><input id="adminInitiativeStartTime" type="time" required></div><div class="team-initiative-form-group"><label for="adminInitiativeEndTime">End time</label><input id="adminInitiativeEndTime" type="time" required></div></div>
+        <div class="team-initiative-form-group"><label for="adminInitiativeLocation">Location</label><input id="adminInitiativeLocation" type="text" required minlength="2" maxlength="160" placeholder="Enter activity location"></div>
+        <div class="team-initiative-form-group"><label for="adminInitiativeDescription">Description</label><textarea id="adminInitiativeDescription" required minlength="5" maxlength="4000" rows="5" placeholder="Describe the volunteering activity..."></textarea></div>
+        <div class="team-initiative-review-note"><i data-lucide="shield-check"></i><p>This activity will be published directly as a volunteering initiative.</p></div>
+        <div class="team-initiative-form-actions"><button type="button" class="team-btn-cancel" data-close-admin-initiative>Cancel</button><button type="submit" class="team-btn-action">Publish activity <i data-lucide="send"></i></button></div>
+        <p id="adminInitiativeMessage" class="team-initiative-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="adminRewardModal" class="team-initiative-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="adminRewardTitle">
+    <div class="team-initiative-form-card">
+      <div class="team-initiative-form-header"><div><h2 id="adminRewardTitle">Add a reward</h2><p>Create an item for the Rewards catalogue using the same details shown on each reward card.</p></div><button type="button" class="team-close-modal-btn" data-close-admin-reward aria-label="Close reward form"><i data-lucide="x"></i></button></div>
+      <form id="adminRewardForm">
+        <div class="team-initiative-form-group"><label for="adminRewardName">Reward name</label><input id="adminRewardName" type="text" required minlength="2" maxlength="160" placeholder="Example: Reusable Bottle"></div>
+        <div class="team-initiative-form-group"><label for="adminRewardDescription">Description</label><textarea id="adminRewardDescription" required minlength="5" maxlength="4000" rows="4" placeholder="Describe what the recipient will receive..."></textarea></div>
+        <div class="team-initiative-form-row"><div class="team-initiative-form-group"><label for="adminRewardPoints">EcoPoints cost</label><input id="adminRewardPoints" type="number" required min="1" max="100000" placeholder="300"></div><div class="team-initiative-form-group"><label for="adminRewardStock">Available stock</label><input id="adminRewardStock" type="number" required min="0" max="100000" placeholder="20"></div></div>
+        <div class="team-initiative-form-group"><label for="adminRewardIcon">Card icon</label><select id="adminRewardIcon"><option value="gift">Gift</option><option value="coffee">Coffee</option><option value="leaf">Leaf</option><option value="book-open">Book</option><option value="ticket">Ticket</option></select></div>
+        <div class="team-initiative-form-actions"><button type="button" class="team-btn-cancel" data-close-admin-reward>Cancel</button><button type="submit" class="team-btn-action">Publish reward <i data-lucide="gift"></i></button></div>
+        <p id="adminRewardMessage" class="team-initiative-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="rewardContactModal" class="team-initiative-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="rewardContactTitle">
+    <div class="team-initiative-form-card team-reward-contact-card">
+      <div class="team-initiative-form-header"><div><h2 id="rewardContactTitle">Confirm your reward</h2><p>Share your contact details so the organisation can arrange collection.</p></div><button type="button" class="team-close-modal-btn" data-close-reward-contact aria-label="Close redemption form"><i data-lucide="x"></i></button></div>
+      <form id="rewardContactForm">
+        <div id="rewardContactSummary" class="team-reward-contact-summary"></div>
+        <div class="team-initiative-form-group"><label for="rewardContactPhone">Phone number</label><input id="rewardContactPhone" type="tel" required minlength="6" maxlength="40" placeholder="Enter a contact number"></div>
+        <div class="team-initiative-form-group"><label for="rewardContactEmail">Email address</label><input id="rewardContactEmail" type="email" required placeholder="name@example.edu"></div>
+        <div class="team-initiative-form-actions"><button type="button" class="team-btn-cancel" data-close-reward-contact>Cancel</button><button type="submit" class="team-btn-action">Confirm redemption <i data-lucide="check"></i></button></div>
+        <p id="rewardContactMessage" class="team-initiative-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="adminRewardLockedModal" class="team-initiative-modal team-points-requirement-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="adminRewardLockedTitle">
+    <div class="team-points-requirement-card"><div class="team-points-requirement-icon"><i data-lucide="lock-keyhole"></i></div><h2 id="adminRewardLockedTitle">Rewards locked</h2><p>Administrator accounts manage the rewards catalogue and cannot redeem reward items.</p><button type="button" class="team-btn-action" data-close-admin-reward-locked>Got it</button></div>
+  </div>
+
+  <div id="rewardPointsLockedModal" class="team-initiative-modal team-points-requirement-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="rewardPointsLockedTitle">
+    <div class="team-points-requirement-card"><div class="team-points-requirement-icon"><i data-lucide="lock-keyhole"></i></div><h2 id="rewardPointsLockedTitle">Reward locked</h2><p>You do not have enough points to redeem this reward yet. Go earn more points and come back soon!</p><button type="button" class="team-btn-action" data-close-reward-points-locked>Got it</button></div>
+  </div>
+
+  <!-- PAGE: ECOPOINTS ACTIVITY -->
+  <section id="ecoPointsPage" class="page-view">
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand"><div class="logo-icon"><i data-lucide="leaf"></i></div><span class="brand-name">EcoPoints</span></div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-item" data-route="homePage"><i data-lucide="home"></i><span>Home</span></a>
+          <a href="#" class="nav-item nav-dash-btn" data-route="dashboardPage"><i data-lucide="bar-chart-2"></i><span>Dashboard</span></a>
+          <a href="#" class="nav-item active" data-route="ecoPointsPage"><i data-lucide="zap"></i><span>Activity</span></a>
+          <a href="#" class="nav-item" data-route="rewardsPage"><i data-lucide="gift"></i><span>Rewards</span></a>
+          <a href="#" class="nav-item" data-route="profilePage"><i data-lucide="user"></i><span>Profile</span></a>
+          <a href="#" class="nav-item" data-route="adminPage"><i data-lucide="settings"></i><span>Admin</span></a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom"><div class="slogan-card motto-card"><div class="globe-icon motto-icon"><i data-lucide="leaf"></i></div><div class="motto-content"><p class="motto-text" aria-live="polite">Loading an Earth-minded thought...</p><span class="motto-source"></span></div><button type="button" class="motto-refresh" aria-label="Show another environmental motto" title="Show another motto"><i data-lucide="refresh-cw"></i></button></div></div>
+    </aside>
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-right">
+          <button type="button" class="notification-btn" aria-label="Notifications" aria-expanded="false"><i data-lucide="bell"></i><span class="notification-badge"></span></button>
+          <button type="button" class="user-profile" data-account-menu-toggle aria-label="Open account menu" aria-expanded="false"><span class="avatar-placeholder" data-user-avatar></span><span class="user-info"><span class="user-name">Sarah Tan</span><span class="user-role">Student</span></span><i data-lucide="chevron-down" class="dropdown-icon"></i></button>
+        </div>
+      </header>
+      <div class="dashboard-body"><div class="team-page team-content">
+
+
+            <!-- =====================================================
+                 HERO
+            ====================================================== -->
+
+            <section class="team-ecopoints-banner">
+
+
+                <div class="team-banner-text">
+
+                    <span class="team-banner-tag">
+
+                        <i data-lucide="leaf"></i>
+
+                        COLLECT ECOPOINTS
+
+                    </span>
+
+
+                    <h1>
+
+                        Small actions<br>
+
+                        <span>
+                            drive big change.
+                        </span>
+
+                    </h1>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 ECOPOINT BALANCE
+            ====================================================== -->
+
+            <section class="team-ecopoint-balance-card">
+
+
+                <div class="team-balance-icon">
+
+                    <i data-lucide="leaf"></i>
+
+                </div>
+
+
+
+                <div>
+
+
+                    <span class="team-stat-label">
+
+                        Your EcoPoints Balance
+
+                    </span>
+
+
+
+                    <div class="team-stat-value-group">
+
+
+                        <span
+                            class="team-stat-value"
+                            id="team-userPoints"
+                        >
+                            0
+                        </span>
+
+
+                    </div>
+
+
+
+                    <p class="team-stat-subtext">
+
+                        Keep going! Every action counts.
+
+                    </p>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 TABS
+            ====================================================== -->
+
+            <section class="team-ecopoints-tabs">
+
+
+                <!-- TRANSPORT TAB BUTTON -->
+                <button
+                    class="team-eco-tab team-active"
+                    onclick="teamShowEcoTab('transportTab', this)"
+                >
+
+                    <i data-lucide="bike"></i>
+
+                    Sustainable Transport
+
+                </button>
+
+
+
+                <!-- VOLUNTEERING TAB BUTTON -->
+                <button
+                    class="team-eco-tab"
+                    onclick="teamShowEcoTab('volunteerTab', this)"
+                >
+
+                    <i data-lucide="users"></i>
+
+                    Volunteering Initiatives
+
+                </button>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 SUSTAINABLE TRANSPORT
+            ====================================================== -->
+
+            <section
+                id="team-transportTab"
+                class="team-eco-tab-content"
+            >
+
+
+                <div class="team-section-heading">
+
+                    <h2>
+                        Log Your Sustainable Transport
+                    </h2>
+
+
+                    <p>
+                        Choose a mode of transport and
+                        log your trip to earn EcoPoints.
+                    </p>
+
+                </div>
+
+
+
+                <div class="team-transport-grid">
+
+
+                    <!-- WALKING -->
+                    <div class="team-transport-card">
+
+
+                        <div class="team-transport-icon-box">
+                             <i data-lucide="footprints"></i>
+                        </div>
+
+
+
+                        <div class="team-transport-card-content">
+
+
+                            <div class="team-transport-card-header">
+
+                                <h3>
+                                    Walking
+                                </h3>
+
+                                <span class="team-points-badge">
+                                    +10 pts
+                                </span>
+
+                            </div>
+
+
+
+                            <p>
+
+                                Log your walk to campus
+                                or around the city.
+
+                            </p>
+
+
+
+                            <button type="button" class="team-btn-action" data-transport-mode="walking">
+
+                                Log a Walk
+
+                                <i data-lucide="arrow-right"></i>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CYCLING -->
+                    <div class="team-transport-card">
+
+
+                        <!-- CYCLING -->
+                    <div class="team-transport-icon-box">
+                        <i data-lucide="bike"></i>
+                            </div>
+
+
+
+                        <div class="team-transport-card-content">
+
+
+                            <div class="team-transport-card-header">
+
+                                <h3>
+                                    Cycling
+                                </h3>
+
+                                <span class="team-points-badge">
+                                    +20 pts
+                                </span>
+
+                            </div>
+
+
+
+                            <p>
+
+                                Log your cycling trip
+                                to earn EcoPoints.
+
+                            </p>
+
+
+
+                            <button type="button" class="team-btn-action" data-transport-mode="cycling">
+
+                                Log a Cycle
+
+                                <i data-lucide="arrow-right"></i>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BUS -->
+                    <div class="team-transport-card">
+                        <div class="team-transport-icon-box">
+                            <i data-lucide="bus"></i>
+
+                        </div>
+
+
+
+                        <div class="team-transport-card-content">
+
+
+                            <div class="team-transport-card-header">
+
+                                <h3>
+
+                                    Campus Bus /
+                                    Public Transport
+
+                                </h3>
+
+
+                                <span class="team-points-badge">
+                                    +15 pts
+                                </span>
+
+                            </div>
+
+
+
+                            <p>
+
+                                Log your bus or public
+                                transport trip.
+
+                            </p>
+
+
+
+                            <button class="team-btn-action">
+
+                                Log a Trip
+
+                                <i data-lucide="arrow-right"></i>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CARPOOL -->
+                    <div class="team-transport-card">
+                        <div class="team-transport-icon-box">
+                            <i data-lucide="car"></i>
+                        </div>
+
+
+
+                        <div class="team-transport-card-content">
+
+
+                            <div class="team-transport-card-header">
+
+                                <h3>
+                                    Carpool
+                                </h3>
+
+                                <span class="team-points-badge">
+                                    +25 pts
+                                </span>
+
+                            </div>
+
+
+
+                            <p>
+
+                                Share a ride with other
+                                students or employees.
+
+                            </p>
+
+
+
+                            <button class="team-btn-action">
+
+                                Log a Carpool
+
+                                <i data-lucide="arrow-right"></i>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 VOLUNTEERING INITIATIVES
+            ====================================================== -->
+
+            <section
+                id="team-volunteerTab"
+                class="team-eco-tab-content"
+                style="display: none;"
+            >
+
+
+                <!-- TOP -->
+                <div class="team-volunteer-heading">
+
+
+                    <div>
+
+                        <h2>
+                            Join Sustainability Activities
+                        </h2>
+
+
+                        <p>
+
+                            Take part in sustainability initiatives
+                            organised by your community.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- OPEN SUBMISSION FORM -->
+                    <button
+                        id="team-initiateActivityButton"
+                        class="team-btn-action"
+                        type="button"
+                        onclick="teamOpenInitiativeForm()"
+                        aria-describedby="team-initiateRequirement"
+                    >
+
+                        <i data-lucide="lock" aria-hidden="true"></i>
+
+                        <span>Initiate Activity</span>
+
+                    </button>
+
+                    <span id="team-initiateRequirement" class="team-initiate-requirement">
+                        2,000 points required
+                    </span>
+
+
+                </div>
+
+
+                <div id="team-initiativesContainer"><div class="team-empty-state">Loading volunteering initiatives...</div></div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- POINT REQUIREMENT NOTICE -->
+<div
+    id="team-pointsRequirementModal"
+    class="team-initiative-modal team-points-requirement-modal"
+    style="display: none;"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="team-pointsRequirementTitle"
+    aria-describedby="team-pointsRequirementText"
+>
+    <div class="team-points-requirement-card">
+        <div class="team-points-requirement-icon"><i data-lucide="lock-keyhole" aria-hidden="true"></i></div>
+        <h2 id="team-pointsRequirementTitle">Activity locked</h2>
+        <p id="team-pointsRequirementText">You don't have 2,000 EcoPoints yet, so you can't initiate an activity. Go earn more points and come back soon!</p>
+        <button type="button" class="team-btn-action" onclick="teamClosePointsRequirementModal()">Got it</button>
+    </div>
+</div>
+
+
+
+<!-- =========================================================
+     INITIATE ACTIVITY MODAL
+========================================================== -->
+
+<div
+    id="team-initiativeModal"
+    class="team-initiative-modal"
+    style="display: none;"
+>
+
+
+    <div class="team-initiative-form-card">
+
+
+        <!-- FORM HEADER -->
+        <div class="team-initiative-form-header">
+
+
+            <div>
+
+                <h2>
+                    Initiate Sustainability Activity
+                </h2>
+
+
+                <p>
+
+                    Submit your initiative for admin review.
+                    The activity will only be published
+                    after approval.
+
+                </p>
+
+            </div>
+
+
+
+            <button
+                type="button"
+                class="team-close-modal-btn"
+                onclick="teamCloseInitiativeForm()"
+            >
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             INITIATIVE FORM
+        ====================================================== -->
+
+        <form id="team-initiativeForm">
+
+
+            <!-- TITLE -->
+            <div class="team-initiative-form-group">
+
+                <label for="initiativeTitle">
+
+                    Activity Name
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="team-initiativeTitle"
+                    name="title"
+                    placeholder="Example: Campus Clean-Up"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- DATE -->
+            <div class="team-initiative-form-group">
+
+                <label for="initiativeDate">
+
+                    Date
+
+                </label>
+
+
+                <input
+                    type="date"
+                    id="team-initiativeDate"
+                    name="date"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- TIMES -->
+            <div class="team-initiative-form-row">
+
+
+                <div class="team-initiative-form-group">
+
+                    <label for="initiativeStartTime">
+
+                        Start Time
+
+                    </label>
+
+
+                    <input
+                        type="time"
+                        id="team-initiativeStartTime"
+                        name="startTime"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="team-initiative-form-group">
+
+                    <label for="initiativeEndTime">
+
+                        End Time
+
+                    </label>
+
+
+                    <input
+                        type="time"
+                        id="team-initiativeEndTime"
+                        name="endTime"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- LOCATION -->
+            <div class="team-initiative-form-group">
+
+                <label for="initiativeLocation">
+
+                    Location
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="team-initiativeLocation"
+                    name="location"
+                    placeholder="Enter activity location"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+            <div class="team-initiative-form-group">
+
+                <label for="initiativeDescription">
+
+                    Description
+
+                </label>
+
+
+                <textarea
+                    id="team-initiativeDescription"
+                    name="description"
+                    rows="5"
+                    placeholder="Describe the activity..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- IMAGE -->
+            <div class="team-initiative-form-group">
+
+                <label for="initiativeImage">
+
+                    Activity Image
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="team-initiativeImage"
+                    name="image"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+
+            <!-- INFORMATION -->
+            <div class="team-initiative-review-note">
+
+                <i data-lucide="info"></i>
+
+
+                <p>
+
+                    Your activity will be submitted for
+                    admin approval. EcoPoints will be assigned
+                    by the admin before the activity is published.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
+            <div class="team-initiative-form-actions">
+
+
+                <button
+                    type="button"
+                    class="team-btn-cancel"
+                    onclick="teamCloseInitiativeForm()"
+                >
+
+                    Cancel
+
+                </button>
+
+
+
+                <button
+                    type="submit"
+                    class="team-btn-action"
+                >
+
+                    Submit for Review
+
+                    <i data-lucide="send"></i>
+
+                </button>
+
+
+            </div>
+
+
+        <p id="team-initiativeMessage" class="team-initiative-message" role="status"></p></form>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+
+
+
+
+</div></div>
+    </main>
+  </div>
+</section>
+  <section id="rewardsPage" class="page-view">
+    <div class="app-container">
+      <aside class="sidebar"><div class="sidebar-top"><div class="brand"><div class="logo-icon"><i data-lucide="leaf"></i></div><span class="brand-name">EcoPoints</span></div><nav class="nav-menu"><a href="#" class="nav-item" data-route="homePage"><i data-lucide="home"></i><span>Home</span></a><a href="#" class="nav-item nav-dash-btn" data-route="dashboardPage"><i data-lucide="bar-chart-2"></i><span>Dashboard</span></a><a href="#" class="nav-item" data-route="ecoPointsPage"><i data-lucide="zap"></i><span>Activity</span></a><a href="#" class="nav-item active" data-route="rewardsPage"><i data-lucide="gift"></i><span>Rewards</span></a><a href="#" class="nav-item" data-route="profilePage"><i data-lucide="user"></i><span>Profile</span></a><a href="#" class="nav-item" data-route="adminPage"><i data-lucide="settings"></i><span>Admin</span></a></nav></div><div class="sidebar-bottom"><div class="slogan-card motto-card"><div class="globe-icon motto-icon"><i data-lucide="leaf"></i></div><div class="motto-content"><p class="motto-text" aria-live="polite">Loading an Earth-minded thought...</p><span class="motto-source"></span></div><button type="button" class="motto-refresh" aria-label="Show another environmental motto" title="Show another motto"><i data-lucide="refresh-cw"></i></button></div></div></aside>
+      <main class="main-content"><header class="top-header"><div class="header-right"><button type="button" class="notification-btn" aria-label="Notifications" aria-expanded="false"><i data-lucide="bell"></i><span class="notification-badge"></span></button><button type="button" class="user-profile" data-account-menu-toggle aria-label="Open account menu" aria-expanded="false"><span class="avatar-placeholder" data-user-avatar></span><span class="user-info"><span class="user-name">Sarah Tan</span><span class="user-role">Student</span></span><i data-lucide="chevron-down" class="dropdown-icon"></i></button></div></header><div class="dashboard-body"><div class="team-page team-content">
+  <section class="team-rewards-header">
+    <div><span class="team-banner-tag"><i data-lucide="gift"></i> REWARDS</span><h1>Redeem your EcoPoints</h1><p>Use your EcoPoints to unlock rewards offered by your organisation.</p></div>
+    <div class="team-rewards-points-box"><span>Your EcoPoints</span><strong id="team-rewardPoints">0</strong></div>
+  </section>
+  <section class="team-rewards-section"><div class="team-section-heading"><h2>Available Rewards</h2><p>Rewards are unlocked based on your current EcoPoints balance.</p></div><p id="team-rewardMessage" class="team-reward-message" role="status"></p><div id="team-userRewardsGrid" class="team-user-rewards-grid"><p class="team-empty-state">Loading rewards...</p></div></section>
+</div></div></main>
+    </div>
+  </section><div id="registerModal" class="auth-modal" hidden>
+    <div class="auth-modal-backdrop" data-close-register></div>
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+      <button type="button" class="modal-close" data-close-register aria-label="Close registration">&times;</button>
+      <h2 id="registerTitle">Create your EcoPoints account</h2>
+      <p>Start tracking sustainable actions and earning rewards.</p>
+      <form id="registerForm" class="login-form">
+        <div class="form-group"><label for="registerName">Full name</label><input id="registerName" type="text" required minlength="2" autocomplete="name"></div>
+        <div class="form-group"><label for="registerEmail">Email</label><input id="registerEmail" type="email" required autocomplete="email"></div>
+        <div class="form-group"><label for="registerPassword">Password</label><input id="registerPassword" type="password" required minlength="8" autocomplete="new-password"></div>
+        <div class="form-group"><label for="registerRole">Account type</label><select id="registerRole" required><option value="user">User account</option><option value="organization">Organization account</option></select></div>
+        <button type="submit" class="btn-primary">Create account <i data-lucide="arrow-right"></i></button>
+        <p id="registerMessage" class="auth-message" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- PAGE 2: HOME DASHBOARD (Hidden initially)  -->
+  <!-- ========================================== -->
+  <section id="homePage" class="page-view">
+    <div class="app-container">
+      
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand">
+            <div class="logo-icon">
+              <i data-lucide="leaf"></i>
+            </div>
+            <span class="brand-name">EcoPoints</span>
+          </div>
+
+          <nav class="nav-menu">
+            <a href="#" class="nav-item active nav-home-btn" data-route="homePage">
+              <i data-lucide="home"></i>
+              <span>Home</span>
+            </a>
+            <a href="#" class="nav-item nav-dash-btn" data-route="dashboardPage">
+              <i data-lucide="bar-chart-2"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-route="ecoPointsPage">
+              <i data-lucide="zap"></i>
+              <span>Activity</span>
+            </a>
+            <a href="#" class="nav-item" data-route="rewardsPage">
+              <i data-lucide="gift"></i>
+              <span>Rewards</span>
+            </a>
+            <a href="#" class="nav-item" data-route="profilePage">
+              <i data-lucide="user"></i>
+              <span>Profile</span>
+            </a>
+            <a href="#" class="nav-item" data-route="adminPage">
+              <i data-lucide="settings"></i>
+              <span>Admin</span>
+            </a>
+          </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="slogan-card motto-card">
+            <div class="globe-icon">
+              <i data-lucide="leaf"></i>
+            </div>
+            <div class="motto-content"><p class="motto-text" aria-live="polite">Loading an Earth-minded thought...</p><span class="motto-source"></span></div>
+            <button type="button" class="motto-refresh" aria-label="Show another environmental motto" title="Show another motto"><i data-lucide="refresh-cw"></i></button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT AREA -->
+      <main class="main-content">
+        
+        <!-- TOP HEADER -->
+        <header class="top-header">
+          <div class="header-right">
+            <button type="button" class="notification-btn" aria-label="Notifications" aria-expanded="false">
+              <i data-lucide="bell"></i>
+              <span class="notification-badge"></span>
+            </button>
+
+            <button type="button" class="user-profile" data-account-menu-toggle aria-label="Open account menu" aria-expanded="false">
+              <span class="avatar-placeholder" data-user-avatar aria-hidden="true"></span>
+              <div class="user-info">
+                <span class="user-name">Sarah Tan</span>
+                <span class="user-role">Student</span>
+              </div>
+              <i data-lucide="chevron-down" class="dropdown-icon"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- DASHBOARD BODY -->
+        <div class="dashboard-body">
+          
+          <!-- HOME HERO: the next useful action is intentionally prominent. -->
+          <section class="welcome-banner">
+            <div class="banner-text">
+              <span class="banner-tag"><i data-lucide="leaf"></i> YOUR NEXT GREEN STEP</span>
+              <h1 id="homeHeroTitle">Make today count.</h1>
+              <p id="homeHeroDescription">Log a sustainable activity or join an initiative to grow your impact.</p>
+              <button type="button" class="btn-banner" data-route="ecoPointsPage" data-activity-tab="volunteerTab" id="homeHeroAction">Log an activity <i data-lucide="arrow-right"></i></button>
+            </div>
+            <div class="banner-graphic home-hero-meter">
+              <span class="home-hero-meter-label">Current balance</span>
+              <strong id="homeHeroBalance">0</strong>
+              <span class="home-hero-meter-unit">EcoPoints</span>
+            </div>
+          </section>
+
+          <!-- STATS CARDS ROW -->
+          <section class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon icon-green">
+                  <i data-lucide="leaf"></i>
+                </div>
+                <i data-lucide="chevron-right" class="arrow-link"></i>
+              </div>
+              <span class="stat-label">Your EcoPoints Balance</span>
+              <div class="stat-value-group">
+                <span class="stat-value" id="homeBalance">0</span>
+              </div>
+              <p class="stat-subtext">Keep going! Every action counts.</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon icon-blue">
+                  <i data-lucide="zap"></i>
+                </div>
+                <i data-lucide="chevron-right" class="arrow-link"></i>
+              </div>
+              <span class="stat-label">Activities this week</span>
+              <div class="stat-value-group">
+                <span class="stat-value" id="homeActivities">0</span>
+                <span class="stat-tag-text">this week</span>
+              </div>
+              <p class="stat-subtext">Cycling, volunteering, energy saving</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon icon-orange">
+                  <i data-lucide="gift"></i>
+                </div>
+                <i data-lucide="chevron-right" class="arrow-link"></i>
+              </div>
+              <span class="stat-label">Rewards redeemed</span>
+              <div class="stat-value-group">
+                <span class="stat-value" id="homeRewards">0</span>
+                <span class="stat-tag-text">all time</span>
+              </div>
+              <p class="stat-subtext">You're making a positive impact!</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon icon-emerald">
+                  <i data-lucide="trophy"></i>
+                </div>
+                <i data-lucide="chevron-right" class="arrow-link"></i>
+              </div>
+                <span class="stat-label" id="homeFourthStatLabel">Progress to your next reward</span>
+              <div class="stat-value-group">
+                <span class="stat-value" id="homeFourthStatValue">--</span>
+              </div>
+              <p class="stat-subtext" id="homeFourthStatSubtext">Loading your next milestone...</p>
+            </div>
+          </section>
+
+          <!-- MAIN 3-COLUMN SECTIONS -->
+          <section class="content-grid">
+            <div class="card-box initiatives-card">
+              <div class="card-title-bar">
+                <h3>Available initiatives</h3>
+                <a href="#" class="view-link" data-route="ecoPointsPage" data-activity-tab="volunteerTab">View all <i data-lucide="arrow-right"></i></a>
+              </div>
+              <div class="initiatives-list" id="homeInitiativesList"><div class="home-loading-state">Loading initiatives...</div></div>
+            </div>
+
+            <div class="card-box home-progress-card" id="homeProgressCard">
+              <div class="card-title-bar"><h3 id="homeProgressTitle">Your next reward</h3><a href="#" class="view-link" data-route="rewardsPage">View rewards <i data-lucide="arrow-right"></i></a></div>
+              <div id="homeProgressContent" class="home-progress-content"><div class="home-loading-state">Loading your progress...</div></div>
+            </div>
+
+            <div class="card-box home-dashboard-card">
+              <div class="card-title-bar"><h3>Keep exploring</h3><a href="#" class="view-link" data-route="dashboardPage">Open dashboard <i data-lucide="arrow-right"></i></a></div>
+              <p class="card-muted">See your recorded activities and EcoPoints trend in one place.</p>
+              <button type="button" class="home-secondary-action" data-route="dashboardPage"><i data-lucide="bar-chart-2"></i>View my progress</button>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- PAGE 3: DASHBOARD VIEW (Hidden initially)  -->
+  <!-- ========================================== -->
+  <section id="dashboardPage" class="page-view">
+    <div class="app-container">
+      
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand">
+            <div class="logo-icon">
+              <i data-lucide="leaf"></i>
+            </div>
+            <span class="brand-name">EcoPoints</span>
+          </div>
+
+          <nav class="nav-menu">
+            <a href="#" class="nav-item nav-home-btn" data-route="homePage">
+              <i data-lucide="home"></i>
+              <span>Home</span>
+            </a>
+            <a href="#" class="nav-item active nav-dash-btn" data-route="dashboardPage">
+              <i data-lucide="bar-chart-2"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-route="ecoPointsPage">
+              <i data-lucide="zap"></i>
+              <span>Activity</span>
+            </a>
+            <a href="#" class="nav-item" data-route="rewardsPage">
+              <i data-lucide="gift"></i>
+              <span>Rewards</span>
+            </a>
+            <a href="#" class="nav-item" data-route="profilePage">
+              <i data-lucide="user"></i>
+              <span>Profile</span>
+            </a>
+            <a href="#" class="nav-item" data-route="adminPage">
+              <i data-lucide="settings"></i>
+              <span>Admin</span>
+            </a>
+          </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="slogan-card motto-card">
+            <div class="globe-icon">
+              <i data-lucide="leaf"></i>
+            </div>
+            <div class="motto-content"><p class="motto-text" aria-live="polite">Loading an Earth-minded thought...</p><span class="motto-source"></span></div>
+            <button type="button" class="motto-refresh" aria-label="Show another environmental motto" title="Show another motto"><i data-lucide="refresh-cw"></i></button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT AREA -->
+      <main class="main-content">
+        
+        <!-- TOP HEADER -->
+        <header class="top-header">
+          <div class="header-right">
+            <button type="button" class="notification-btn" aria-label="Notifications" aria-expanded="false">
+              <i data-lucide="bell"></i>
+              <span class="notification-badge"></span>
+            </button>
+
+            <button type="button" class="user-profile" data-account-menu-toggle aria-label="Open account menu" aria-expanded="false">
+              <span class="avatar-placeholder" data-user-avatar aria-hidden="true"></span>
+              <div class="user-info">
+                <span class="user-name">Sarah Tan</span>
+                <span class="user-role">Student</span>
+              </div>
+              <i data-lucide="chevron-down" class="dropdown-icon"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- The authenticated ECharts workspace is mounted here. -->
+        <div class="dashboard-body"></div>
+      </main>
+    </div>
+  </section>
+
+  
+<script>
+
+
+function teamShowEcoTab(tabId, button) {
+  document.querySelectorAll('.team-eco-tab-content').forEach((content) => { content.style.display = 'none'; });
+  document.querySelectorAll('.team-eco-tab').forEach((tabButton) => { tabButton.classList.remove('team-active'); });
+  const content = byId(tabId) || byId('team-' + tabId);
+  if (content) content.style.display = 'block';
+  if (button) button.classList.add('team-active');
+  if (tabId === 'volunteerTab') loadTeamVolunteeringInitiatives();
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function teamOpenInitiativeForm() {
+  if (!teamHasInitiativeAccess) {
+    teamOpenPointsRequirementModal();
+    return;
+  }
+  const modal = byId('team-initiativeModal');
+  if (modal) modal.style.display = 'flex';
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function teamCloseInitiativeForm() {
+  const modal = byId('team-initiativeModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function teamShowPublishedInitiative(initiative) {
+  const container = byId('team-initiativesContainer');
+  if (!container) return;
+  const start = new Date(initiative.start_date);
+  const end = new Date(initiative.end_date);
+  const date = start.toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' });
+  const time = start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + '–' + end.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const card = document.createElement('article');
+  card.className = 'team-sample-initiative team-initiative-row';
+  card.innerHTML = '<div class=\"team-initiative-details\"><h3>' + escapeHtml(initiative.title) + '</h3><span><i data-lucide=\"calendar\"></i>Date: ' + date + '</span><span><i data-lucide=\"clock\"></i>Time: ' + time + '</span><p>' + escapeHtml(initiative.description).replace(/\n/g, '<br>') + '</p></div><div class=\"team-initiative-actions\"><span class=\"team-points-badge\">Admin published</span><button class=\"team-btn-action\" type=\"button\">Join This Event</button></div>';
+  container.prepend(card);
+  if (window.lucide) window.lucide.createIcons();
+}
+
+async function loadTeamVolunteeringInitiatives() {
+  const container = byId('team-initiativesContainer');
+  if (!container) return;
+  try {
+    const initiatives = await api('/api/initiatives');
+    const volunteering = initiatives.filter((initiative) => initiative.category === 'volunteering');
+    container.innerHTML = volunteering.length ? '' : '<div class="team-empty-state"><i data-lucide="calendar-off"></i>No volunteering initiatives are available right now.</div>';
+    volunteering.forEach(teamShowPublishedInitiative);
+    if (window.lucide) window.lucide.createIcons();
+  } catch (error) {
+    // Keep the existing demonstration activity visible while the API is unavailable.
+  }
+}
+
+const TEAM_INITIATIVE_POINTS_REQUIRED = 2000;
+let teamHasInitiativeAccess = false;
+
+function teamSetInitiativeAccess(points) {
+  teamHasInitiativeAccess = Number(points) >= TEAM_INITIATIVE_POINTS_REQUIRED;
+  const button = byId('team-initiateActivityButton');
+  const requirement = byId('team-initiateRequirement');
+  if (!button) return;
+
+  button.classList.toggle('team-btn-action-locked', !teamHasInitiativeAccess);
+  button.setAttribute('aria-label', teamHasInitiativeAccess
+    ? 'Initiate Activity'
+    : 'Initiate Activity is locked until you have 2,000 EcoPoints');
+  const icon = button.querySelector('[data-lucide], .lucide');
+  if (icon) icon.outerHTML = '<i data-lucide=\"' + (teamHasInitiativeAccess ? 'plus' : 'lock') + '\" aria-hidden=\"true\"></i>';
+  if (requirement) {
+    requirement.textContent = teamHasInitiativeAccess
+      ? 'Ready to initiate'
+      : '2,000 points required';
+    requirement.classList.toggle('is-ready', teamHasInitiativeAccess);
+  }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function teamOpenPointsRequirementModal() {
+  const modal = byId('team-pointsRequirementModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    modal.querySelector('button')?.focus();
+  }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function teamClosePointsRequirementModal() {
+  const modal = byId('team-pointsRequirementModal');
+  if (modal) modal.style.display = 'none';
+  byId('team-initiateActivityButton')?.focus();
+}
+
+function teamWireActivityPage() {
+  teamSetInitiativeAccess(0);
+  const form = byId('team-initiativeForm');
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!teamHasInitiativeAccess) {
+      teamCloseInitiativeForm();
+      teamOpenPointsRequirementModal();
+      return;
+    }
+    setMessage(byId('team-initiativeMessage'), 'Submitting your activity for admin review...', false);
+    try {
+      await api('/api/activity-requests', { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() }, body: JSON.stringify({ title: byId('team-initiativeTitle').value.trim(), description: byId('team-initiativeDescription').value.trim() + '\n\nDate: ' + byId('team-initiativeDate').value + '\nTime: ' + byId('team-initiativeStartTime').value + ' - ' + byId('team-initiativeEndTime').value + '\nLocation: ' + byId('team-initiativeLocation').value.trim() }) });
+      setMessage(byId('team-initiativeMessage'), 'Your activity has been submitted for admin review.', false);
+      form.reset();
+      teamCloseInitiativeForm();
+      loadNotifications();
+    } catch (error) { setMessage(byId('team-initiativeMessage'), error.message); }
+  });
+  document.querySelectorAll('.team-initiative-modal').forEach((modal) => modal.addEventListener('click', (event) => {
+    if (event.target !== modal) return;
+    if (modal.id === 'team-pointsRequirementModal') teamClosePointsRequirementModal();
+    else teamCloseInitiativeForm();
+  }));
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (byId('team-pointsRequirementModal')?.style.display === 'flex') teamClosePointsRequirementModal();
+    else if (byId('team-initiativeModal')?.style.display === 'flex') teamCloseInitiativeForm();
+  });
+}
+
+function formatHomeDate(value) {
+  if (!value) return 'Open-ended';
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? 'Open-ended' : date.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+}
+
+function homeInitiativeIcon(category) {
+  const icons = { volunteering: 'users', transport: 'bike', energy: 'zap' };
+  return icons[String(category || '').toLowerCase()] || 'leaf';
+}
+
+function renderHomeSummary(summary) {
+  const user = currentSessionUser();
+  const balance = Number(summary.balance || 0);
+  const organization = user?.role === 'organization';
+  const setText = (id, value) => { const element = byId(id); if (element) element.textContent = value; };
+  setText('homeBalance', balance.toLocaleString());
+  setText('homeHeroBalance', balance.toLocaleString());
+  setText('homeActivities', Number(summary.activities_this_week || 0).toLocaleString());
+  setText('homeRewards', Number(summary.rewards_redeemed || 0).toLocaleString());
+  const initiatives = (Array.isArray(summary.initiatives) ? summary.initiatives : []).filter((initiative) => String(initiative.category || '').toLowerCase() === 'volunteering');
+  const initiativeList = byId('homeInitiativesList');
+  if (initiativeList) {
+    initiativeList.innerHTML = initiatives.length ? initiatives.map((initiative) => {
+      const dateLabel = initiative.start_date ? formatHomeDate(initiative.start_date) + (initiative.end_date ? ' – ' + formatHomeDate(initiative.end_date) : '') : 'Open-ended';
+      return '<article class="initiative-item"><div class="init-thumb bg-transport"><i data-lucide="' + homeInitiativeIcon(initiative.category) + '"></i></div><div class="init-details"><h4>' + escapeHtml(initiative.title) + '</h4><span class="init-date"><i data-lucide="calendar"></i>' + escapeHtml(dateLabel) + '</span><p>' + escapeHtml(initiative.description) + '</p></div><span class="points-badge">+' + Number(initiative.points || 0).toLocaleString() + ' pts</span></article>';
+    }).join('') : '<div class="home-empty-state"><i data-lucide="calendar-off"></i><span>No active initiatives right now. Check back soon.</span></div>';
+  }
+  const title = byId('homeHeroTitle');
+  const description = byId('homeHeroDescription');
+  const action = byId('homeHeroAction');
+  const nextReward = summary.next_reward;
+  if (organization) {
+    if (title) title.textContent = initiatives.length ? 'Turn participation into progress.' : 'Your organisation, in motion.';
+    if (description) description.textContent = initiatives.length ? 'Join an initiative and help your organisation move up the leaderboard.' : 'Invite your team to keep building a stronger sustainability record.';
+    if (action) { action.innerHTML = 'Explore initiatives <i data-lucide="arrow-right"></i>'; action.dataset.route = 'ecoPointsPage'; action.dataset.activityTab = 'volunteerTab'; }
+    setText('homeFourthStatLabel', 'Organisation rank');
+    setText('homeFourthStatValue', summary.organization_rank ? '#' + summary.organization_rank : '--');
+    setText('homeFourthStatSubtext', summary.organization_rank ? 'Based on earned EcoPoints' : 'No ranking yet — start earning points');
+    const progressTitle = byId('homeProgressTitle');
+    const progressContent = byId('homeProgressContent');
+    if (progressTitle) progressTitle.textContent = 'Organisation emissions leaderboard';
+    if (progressContent) {
+      const leaders = Array.isArray(summary.organization_leaderboard) ? summary.organization_leaderboard.slice() : [];
+      if (summary.organization_rank && !leaders.some((item) => item.is_current_user)) leaders.push({ rank: summary.organization_rank, name: 'Your organisation', points: Number(summary.organization_points || 0), is_current_user: true });
+      leaders.sort((a, b) => Number(a.rank) - Number(b.rank));
+      progressContent.innerHTML = leaders.length ? '<div class="home-leaderboard">' + leaders.map((entry) => '<div class="home-leaderboard-row' + (entry.is_current_user ? ' is-current' : '') + '"><span class="home-rank">' + Number(entry.rank) + '</span><span class="home-leader-name">' + escapeHtml(entry.is_current_user ? 'You · ' + entry.name : entry.name) + '</span><strong>' + Number(entry.points || 0).toLocaleString() + ' pts</strong></div>').join('') + '</div>' : '<div class="home-empty-state"><i data-lucide="trophy"></i><span>No organisation activity has been recorded yet.</span></div>';
+    }
+  } else {
+    if (title) title.textContent = nextReward ? 'You are close to your next reward.' : 'Make today count.';
+    if (description) description.textContent = nextReward ? Number(nextReward.remaining).toLocaleString() + ' more points unlocks ' + nextReward.name + '.' : 'You have reached every currently available reward. Keep building your impact.';
+    if (action) { action.innerHTML = (nextReward ? 'Log an activity ' : 'Explore rewards ') + '<i data-lucide="arrow-right"></i>'; action.dataset.route = nextReward ? 'ecoPointsPage' : 'rewardsPage'; action.dataset.activityTab = nextReward ? 'volunteerTab' : ''; }
+    setText('homeFourthStatLabel', 'Progress to your next reward');
+    setText('homeFourthStatValue', nextReward ? Number(nextReward.percentage) + '%' : 'Ready');
+    setText('homeFourthStatSubtext', nextReward ? Number(nextReward.remaining).toLocaleString() + ' pts to go' : 'All current rewards unlocked');
+    const progressTitle = byId('homeProgressTitle');
+    const progressContent = byId('homeProgressContent');
+    if (progressTitle) progressTitle.textContent = 'Your next reward';
+    if (progressContent) {
+      progressContent.innerHTML = nextReward ? '<div class="home-reward-name"><i data-lucide="gift"></i><strong>' + escapeHtml(nextReward.name) + '</strong></div><div class="home-progress-track"><span style="width:' + Math.max(0, Math.min(100, Number(nextReward.percentage || 0))) + '%"></span></div><div class="home-progress-meta"><span>' + Number(nextReward.progress || 0).toLocaleString() + ' / ' + Number(nextReward.points_cost || 0).toLocaleString() + ' pts</span><strong>' + Number(nextReward.remaining || 0).toLocaleString() + ' to go</strong></div>' : '<div class="home-complete-state"><i data-lucide="badge-check"></i><strong>You are reward-ready.</strong><span>Browse the catalogue to choose your next redemption.</span></div>';
+    }
+  }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+async function loadTeamPoints() {
+  const requestToken = getToken();
+  const points = byId('team-userPoints');
+  const rewardPoints = byId('team-rewardPoints');
+  if (!points && !rewardPoints && !byId('homeBalance')) return;
+  try {
+    const summary = await api('/api/home/summary', { headers: { Authorization: 'Bearer ' + requestToken } });
+    if (requestToken !== getToken()) return;
+    const balance = Number(summary.balance || 0);
+    const value = balance.toLocaleString();
+    if (points) points.textContent = value;
+    if (rewardPoints) rewardPoints.textContent = value;
+    renderHomeSummary(summary);
+    teamSetInitiativeAccess(balance);
+  } catch (error) {
+    // The page remains usable before the API is configured.
+    if (requestToken !== getToken()) return;
+    teamSetInitiativeAccess(0);
+  }
+}
+
+let pendingReward = null;
+
+function currentSessionUser() {
+  const storage = sessionStorageForToken();
+  try { return JSON.parse(storage.getItem('ecopoints_11_user') || 'null'); } catch { return null; }
+}
+
+function accountStore() {
+  try { return JSON.parse(localStorage.getItem('ecopoints_11_accounts') || '[]'); } catch (error) { return []; }
+}
+
+function saveAccountStore(accounts) { localStorage.setItem('ecopoints_11_accounts', JSON.stringify(accounts)); }
+
+function accountLabel(role) { return role === 'admin' ? 'Administrator' : role === 'organization' ? 'Organization' : 'User'; }
+
+function sessionStorageForToken() { return localStorage.getItem('ecopoints_11_token') ? localStorage : sessionStorage; }
+
+function rememberCurrentAccount(user, token) {
+  const accounts = accountStore().filter((item) => item.id !== user.id && item.email !== user.email);
+  const profile = JSON.parse(localStorage.getItem('ecopoints_11_profile') || '{}');
+  accounts.unshift({ ...user, access_token: token || null, storage_scope: token && localStorage.getItem('ecopoints_11_token') === token ? 'local' : 'session', avatar_url: user.avatar_url || profile.picture || null });
+  saveAccountStore(accounts.slice(0, 8));
+}
+
+function renderAccountAvatar(user) {
+  const initials = (user?.full_name || 'EP').split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+  const avatarUrl = typeof user?.avatar_url === 'string' && user.avatar_url ? user.avatar_url.replace(/"/g, '%22') : '';
+  document.querySelectorAll('[data-user-avatar]').forEach((avatar) => { avatar.textContent = initials; avatar.style.backgroundImage = avatarUrl ? 'url("' + avatarUrl + '")' : ''; if (avatarUrl) avatar.textContent = ''; });
+  const profileAvatar = byId('profileAvatar');
+  if (profileAvatar) { profileAvatar.textContent = initials; profileAvatar.style.backgroundImage = avatarUrl ? 'url("' + avatarUrl + '")' : ''; if (avatarUrl) profileAvatar.textContent = ''; }
+}
+
+function wireUtilityAccountTools() {
+  document.querySelectorAll('.utility-header').forEach((header) => {
+    if (header.closest('#profilePage')) return;
+    if (header.querySelector('.utility-account-tools')) return;
+    const tools = document.createElement('div');
+    tools.className = 'utility-account-tools';
+    tools.innerHTML = '<button type="button" class="notification-btn" aria-label="Notifications" aria-expanded="false"><i data-lucide="bell"></i><span class="notification-badge"></span></button><button type="button" class="user-profile" data-account-menu-toggle aria-label="Open account menu" aria-expanded="false"><span class="avatar-placeholder" data-user-avatar></span><span class="user-info"><span class="user-name"></span><span class="user-role"></span></span><i data-lucide="chevron-down" class="dropdown-icon"></i></button>';
+    header.appendChild(tools);
+  });
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function positionPopover(popover, anchor) {
+  if (!popover || !anchor) return;
+  const rect = anchor.getBoundingClientRect();
+  popover.style.top = Math.round(rect.bottom + 10) + 'px';
+  popover.style.left = Math.round(Math.min(Math.max(12, rect.right - popover.offsetWidth), window.innerWidth - popover.offsetWidth - 12)) + 'px';
+}
+
+function closeAccountPopover() { const popover = byId('accountPopover'); if (popover) popover.hidden = true; document.querySelectorAll('[data-account-menu-toggle]').forEach((button) => button.setAttribute('aria-expanded', 'false')); }
+
+function openAccountPopover(anchor) { const popover = byId('accountPopover'); if (!popover) return; closeNotificationPopover(); popover.hidden = false; positionPopover(popover, anchor); document.querySelectorAll('[data-account-menu-toggle]').forEach((button) => button.setAttribute('aria-expanded', button === anchor ? 'true' : 'false')); }
+
+function closeNotificationPopover() { const popover = byId('notificationPopover'); if (popover) popover.hidden = true; document.querySelectorAll('.notification-btn').forEach((button) => button.setAttribute('aria-expanded', 'false')); }
+
+function toggleNotifications(event) { const popover = byId('notificationPopover'); if (!popover) return; const button = event.currentTarget; const willOpen = popover.hidden; closeAccountPopover(); if (!willOpen) return closeNotificationPopover(); popover.hidden = false; positionPopover(popover, button); button.setAttribute('aria-expanded', 'true'); loadNotifications(); }
+
+function renderAccountList() {
+  const list = byId('accountList'); const deleteButton = byId('accountDeleteButton'); if (!list) return;
+  const current = currentSessionUser(); const accounts = accountStore();
+  if (current) byId('accountSwitchModal').dataset.selectedEmail = current.email;
+  list.innerHTML = accounts.length ? accounts.map((account) => '<button type="button" class="account-option ' + (account.email === current?.email ? 'selected' : '') + '" data-account-email="' + escapeHtml(account.email) + '"><span class="account-option-avatar">' + escapeHtml((account.full_name || 'EP').split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase()) + '</span><span><strong>' + escapeHtml(account.full_name) + '</strong><small>' + escapeHtml(accountLabel(account.role)) + ' · ' + escapeHtml(account.email) + '</small></span><i data-lucide="' + (account.email === current?.email ? 'check-circle-2' : 'arrow-right') + '"></i></button>').join('') : '<div class="empty-state">No saved accounts yet. Use Add account to save another sign-in.</div>';
+  if (deleteButton) deleteButton.disabled = !accounts.length;
+  list.querySelectorAll('[data-account-email]').forEach((button) => button.addEventListener('click', () => selectAccountForSwitch(button.dataset.accountEmail)));
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function openAccountSwitchModal() { closeAccountPopover(); const modal = byId('accountSwitchModal'); if (!modal) return; modal.hidden = false; byId('accountSwitchLogin')?.setAttribute('hidden', ''); byId('accountSwitchMessage').textContent = ''; renderAccountList(); }
+function closeAccountSwitchModal() { const modal = byId('accountSwitchModal'); if (modal) modal.hidden = true; }
+async function selectAccountForSwitch(email) {
+  const account = accountStore().find((item) => item.email === email);
+  if (!account) return;
+  byId('accountSwitchModal').dataset.selectedEmail = email;
+  byId('accountDeleteButton').disabled = false;
+  if (!account.access_token) {
+    reconnectSavedAccount(email, 'Sign in again to reconnect this account.');
+    return;
+  }
+  const previousToken = getToken();
+  try {
+    const user = await api('/api/me', { headers: { Authorization: 'Bearer ' + account.access_token } });
+    if (getToken() !== previousToken || byId('accountSwitchModal').dataset.selectedEmail !== email) return;
+    saveSession({ user, access_token: account.access_token }, account.storage_scope === 'local');
+    rememberCurrentAccount(user, account.access_token);
+    closeAccountSwitchModal(); updateUserLabels(user);
+    if (user.role !== 'admin') loadTeamPoints();
+    loadNotifications(); showPage(defaultAccountPage(user));
+  } catch (error) {
+    if (error.status === 401) {
+      saveAccountStore(accountStore().map(item => item.email === email ? { ...item, access_token: null } : item));
+      reconnectSavedAccount(email, 'This saved session has expired. Enter your password to reconnect.');
+    } else reconnectSavedAccount(email, error.message);
+  }
+}
+
+function reconnectSavedAccount(email, message) {
+  byId('accountSwitchLogin').hidden = false;
+  byId('accountSwitchEmail').value = email;
+  byId('accountSwitchPassword').value = '';
+  setMessage(byId('accountSwitchMessage'), message);
+  byId('accountSwitchPassword').focus();
+}
+
+function addAccountAndReturnToLogin() { closeAccountSwitchModal(); clearSession(); showPage('loginPage'); byId('email')?.focus(); setMessage(byId('authMessage'), 'Sign in to add another account.', false); }
+
+function deleteSelectedAccount() { const email = byId('accountSwitchModal')?.dataset.selectedEmail; if (!email) return; saveAccountStore(accountStore().filter((item) => item.email !== email)); renderAccountList(); setMessage(byId('accountSwitchMessage'), 'Saved account removed from this browser.', false); }
+
+function openAdminRewardLockedModal() {
+  const modal = byId('adminRewardLockedModal');
+  if (modal) { modal.style.display = 'flex'; modal.querySelector('button')?.focus(); }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function closeAdminRewardLockedModal() {
+  const modal = byId('adminRewardLockedModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function openRewardPointsLockedModal() {
+  const modal = byId('rewardPointsLockedModal');
+  if (modal) { modal.style.display = 'flex'; modal.querySelector('button')?.focus(); }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function closeRewardPointsLockedModal() {
+  const modal = byId('rewardPointsLockedModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function openRewardContactModal(reward) {
+  pendingReward = reward;
+  const modal = byId('rewardContactModal');
+  const summary = byId('rewardContactSummary');
+  const user = currentSessionUser();
+  if (summary) summary.innerHTML = '<i data-lucide=\"gift\"></i><div><strong>' + escapeHtml(reward.name) + '</strong><span>' + Number(reward.points_cost).toLocaleString() + ' EcoPoints</span></div>';
+  if (user?.email) byId('rewardContactEmail').value = user.email;
+  if (modal) { modal.style.display = 'flex'; byId('rewardContactPhone')?.focus(); }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function closeRewardContactModal() {
+  const modal = byId('rewardContactModal');
+  if (modal) modal.style.display = 'none';
+  pendingReward = null;
+  byId('rewardContactMessage').textContent = '';
+}
+
+async function loadTeamRewards() {
+  const grid = byId('team-userRewardsGrid');
+  if (!grid) return;
+  try {
+    const [rewards, summary] = await Promise.all([
+      api('/api/rewards'),
+      api('/api/home/summary', { headers: { Authorization: 'Bearer ' + getToken() } }),
+    ]);
+    const isAdmin = currentSessionUser()?.role === 'admin';
+    const currentPoints = Number(summary.balance || 0);
+    const pointsDisplay = byId('team-rewardPoints');
+    if (pointsDisplay) pointsDisplay.textContent = currentPoints.toLocaleString();
+    grid.innerHTML = rewards.map((reward) => {
+      const available = reward.stock > 0;
+      const enoughPoints = currentPoints >= Number(reward.points_cost);
+      const locked = isAdmin || !available || !enoughPoints;
+      const status = isAdmin ? 'Management only' : !available ? 'Out of stock' : !enoughPoints ? 'Not enough points' : 'Available';
+      const action = isAdmin ? 'Rewards locked' : !available ? 'Out of stock' : !enoughPoints ? 'Locked' : 'Redeem now';
+      const actionIcon = isAdmin || !available || !enoughPoints ? 'lock' : 'arrow-right';
+      const cardIcon = locked ? 'lock' : (reward.icon || 'gift');
+      return '<article class="team-user-reward-card ' + (locked ? 'team-reward-locked' : 'team-reward-unlocked') + (isAdmin ? ' team-admin-reward-card' : '') + '"><div class="team-reward-card-icon"><i data-lucide="' + cardIcon + '"></i></div><div class="team-reward-card-content"><span class="team-reward-status ' + (locked ? 'locked' : 'unlocked') + '">' + status + '</span><h3>' + escapeHtml(reward.name) + '</h3><p>' + escapeHtml(reward.description) + '</p><div class="team-reward-cost"><i data-lucide="leaf"></i><strong>' + Number(reward.points_cost).toLocaleString() + ' points</strong></div><button type="button" class="team-reward-redeem-btn ' + (locked ? 'team-locked-btn' : '') + '" data-team-reward-id="' + reward.id + '" ' + (!available ? 'disabled' : '') + '>' + action + ' <i data-lucide="' + actionIcon + '"></i></button></div></article>';
+    }).join('');
+    grid.querySelectorAll('[data-team-reward-id]').forEach((button) => button.addEventListener('click', () => {
+      const reward = rewards.find((item) => String(item.id) === button.dataset.teamRewardId);
+      if (isAdmin) { openAdminRewardLockedModal(); return; }
+      if (reward && currentPoints < Number(reward.points_cost)) { openRewardPointsLockedModal(); return; }
+      if (reward) openRewardContactModal(reward);
+    }));
+    if (window.lucide) window.lucide.createIcons();
+  } catch (error) {
+    grid.innerHTML = '<p class="team-empty-state">Unable to load rewards. Make sure the API server is running.</p>';
+  }
+}
+let mottoLines = [];
+let mottoIndex = -1;
+
+function renderMotto() {
+  if (!mottoLines.length) return;
+  mottoIndex = (mottoIndex + 1) % mottoLines.length;
+  const line = mottoLines[mottoIndex];
+  const separator = line.includes('——') ? '——' : ' — ';
+  const splitAt = line.lastIndexOf(separator);
+  const quote = splitAt > 0 ? line.slice(0, splitAt).trim() : line;
+  const source = splitAt > 0 ? line.slice(splitAt + separator.length).trim() : '';
+  document.querySelectorAll('.motto-text').forEach((element) => { element.textContent = quote; });
+  document.querySelectorAll('.motto-source').forEach((element) => { element.textContent = source ? '— ' + source : ''; });
+}
+
+async function loadMottos() {
+  try {
+    const locale = currentLocale ? currentLocale() : 'en';
+    const file = locale === 'zh' ? 'motto-zh.txt' : locale === 'ms' ? 'motto-ms.txt' : 'motto.txt';
+    const response = await fetch(file, { cache: 'no-store' });
+    if (!response.ok) throw new Error('Motto file request failed (' + response.status + ')');
+    mottoLines = (await response.text()).split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+    renderMotto();
+  } catch (error) {
+    mottoLines = ['Care for the Earth, and the Earth will care for you. — EcoPoints'];
+    renderMotto();
+  }
+}
+
+function wireMottos() {
+  document.querySelectorAll('.motto-refresh').forEach((button) => button.addEventListener('click', renderMotto));
+  loadMottos();
+}
+
+// Frontend authentication and page switching for the local demo.
+// 本地演示所需的前端登录、注册和页面切换逻辑。
+const API_BASE = 'http://127.0.0.1:8001';
+
+function byId(id) { return document.getElementById(id); }
+
+function escapeHtml(value) {
+  const element = document.createElement('span');
+  element.textContent = String(value ?? '');
+  return element.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function setMessage(element, message, isError = true) {
+  if (!element) return;
+  element.textContent = message;
+  element.classList.toggle('error', isError);
+  element.classList.toggle('success', !isError);
+}
+
+let pendingActivityTab = null;
+
+function showPage(pageId) {
+  const currentUser = currentSessionUser();
+  if (pageId !== 'loginPage' && (!getToken() || !currentUser)) pageId = 'loginPage';
+  if (pageId === 'adminPage' && currentUser?.role !== 'admin') pageId = 'homePage';
+  if (currentUser?.role === 'admin' && ['homePage', 'dashboardPage', 'ecoPointsPage', 'rewardsPage'].includes(pageId)) pageId = 'adminPage';
+  document.querySelectorAll('.page-view').forEach((page) => page.classList.toggle('active', page.id === pageId));
+  document.querySelectorAll('[data-route], .nav-item').forEach((link) => {
+    const route = link.dataset.route || ({ Home: 'homePage', Dashboard: 'dashboardPage', Activity: 'ecoPointsPage', EcoPoints: 'ecoPointsPage', Rewards: 'rewardsPage', Profile: 'profilePage', Admin: 'adminPage' }[link.textContent.trim()]);
+    link.classList.toggle('active', route === pageId);
+    link.classList.toggle('team-active', route === pageId && link.classList.contains('team-nav-item'));
+  });
+  if (pageId === 'ecoPointsPage' && pendingActivityTab === 'volunteerTab') {
+    const volunteerButton = document.querySelector('#ecoPointsPage .team-eco-tab[onclick*="volunteerTab"]');
+    teamShowEcoTab('volunteerTab', volunteerButton);
+  }
+  pendingActivityTab = null;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (pageId === 'dashboardPage') window.ecoDashboard?.open();
+  if (pageId === 'ecoPointsPage') { loadTeamPoints(); window.ecoTransport?.open(); }
+  if (pageId === 'homePage' && currentUser?.role !== 'admin') loadTeamPoints();
+  if (pageId === 'rewardsPage') { loadRewards(); loadTeamPoints().then(loadTeamRewards); }
+  if (pageId === 'profilePage') loadProfilePreferences();
+  if (pageId === 'adminPage') { loadAdminQueue(); window.ecoAdminRules?.open(); }
+}
+
+function saveSession(data, remember) {
+  localStorage.removeItem('ecopoints_11_token');
+  localStorage.removeItem('ecopoints_11_user');
+  sessionStorage.removeItem('ecopoints_11_token');
+  sessionStorage.removeItem('ecopoints_11_user');
+  const storage = remember ? localStorage : sessionStorage;
+  storage.setItem('ecopoints_11_token', data.access_token);
+  storage.setItem('ecopoints_11_user', JSON.stringify(data.user));
+  document.dispatchEvent(new Event('ecopoints:session'));
+}
+
+function defaultAccountPage(user = currentSessionUser()) { return user?.role === 'admin' ? 'adminPage' : 'homePage'; }
+
+function getToken() {
+  return localStorage.getItem('ecopoints_11_token') || sessionStorage.getItem('ecopoints_11_token');
+}
+
+function clearSession() {
+  localStorage.removeItem('ecopoints_11_token');
+  localStorage.removeItem('ecopoints_11_user');
+  sessionStorage.removeItem('ecopoints_11_token');
+  sessionStorage.removeItem('ecopoints_11_user');
+  document.body.classList.remove('is-admin');
+  document.body.classList.remove('is-user-account');
+  document.querySelectorAll('[data-route="adminPage"]').forEach((item) => { item.hidden = true; });
+  document.querySelectorAll('[data-route="ecoPointsPage"], [data-route="rewardsPage"]').forEach((item) => { item.hidden = false; });
+  document.dispatchEvent(new Event('ecopoints:session'));
+}
+
+async function refreshCurrentUser() {
+  const token = getToken();
+  if (!token) return null;
+  try {
+    const user = await api('/api/me', { headers: { Authorization: 'Bearer ' + token } });
+    if (getToken() !== token) return null;
+    const storage = localStorage.getItem('ecopoints_11_token') ? localStorage : sessionStorage;
+    storage.setItem('ecopoints_11_user', JSON.stringify(user));
+    rememberCurrentAccount(user, token);
+    updateUserLabels(user);
+    return user;
+  } catch (error) {
+    if (getToken() === token && error.status === 401) { clearSession(); showPage('loginPage'); }
+    return null;
+  }
+}
+
+async function api(path, options = {}) {
+  const isForm = options.body instanceof FormData;
+  const response = await fetch(`${API_BASE}${path}`, {
+    ...options,
+    headers: { ...(isForm ? {} : { 'Content-Type': 'application/json' }), ...(options.headers || {}) },
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(typeof data.detail === 'string' ? data.detail : 'Request failed (' + response.status + ')');
+    error.status = response.status;
+    const sentAuthorization = new Headers(options.headers || {}).get('Authorization');
+    const token = getToken();
+    if (response.status === 401 && token && sentAuthorization === 'Bearer ' + token) {
+      saveAccountStore(accountStore().map(account => account.access_token === token ? { ...account, access_token: null } : account));
+      clearSession(); showPage('loginPage');
+      setMessage(byId('authMessage'), 'Your session has expired. Sign in again to continue.');
+    }
+    throw error;
+  }
+  return data;
+}
+
+function updateUserLabels(user) {
+  document.querySelectorAll('.user-name').forEach((item) => { item.textContent = user.full_name; });
+  document.querySelectorAll('.user-role').forEach((item) => { item.textContent = user.role === 'admin' ? 'Administrator' : user.role === 'organization' ? 'Organization' : 'User'; });
+  const isAdmin = user.role === 'admin';
+  document.body.classList.toggle('is-admin', isAdmin);
+  document.body.classList.toggle('is-user-account', !isAdmin);
+  document.querySelectorAll('[data-route="adminPage"]').forEach((item) => { item.hidden = !isAdmin; });
+  document.querySelectorAll('[data-route="ecoPointsPage"], [data-route="rewardsPage"]').forEach((item) => { item.hidden = isAdmin; });
+  document.querySelectorAll('[data-route="homePage"], [data-route="dashboardPage"]').forEach((item) => { item.hidden = isAdmin; });
+  byId('homePage')?.toggleAttribute('hidden', isAdmin);
+  byId('dashboardPage')?.toggleAttribute('hidden', isAdmin);
+  byId('ecoPointsPage')?.toggleAttribute('hidden', isAdmin);
+  byId('rewardsPage')?.toggleAttribute('hidden', isAdmin);
+  byId('adminPage')?.toggleAttribute('hidden', !isAdmin);
+  const isPlus = user.subscription_tier === 'plus';
+  const tierLabel = byId('profileTierLabel');
+  if (tierLabel) tierLabel.textContent = isPlus ? 'Plus' : 'Basic';
+  const expiry = byId('profilePlusExpiry');
+  if (expiry) expiry.textContent = isPlus && user.subscription_expires_at ? 'Plus active until ' + new Date(user.subscription_expires_at).toLocaleDateString('en-GB') : '';
+  const orgSection = byId('organizationApplySection');
+  if (orgSection) orgSection.hidden = user.role !== 'user';
+  renderAccountAvatar(user);
+  const subscriptionButton = byId('openSubscriptionButton');
+  if (subscriptionButton) subscriptionButton.hidden = isAdmin;
+  byId('profileSubscriptionSection')?.toggleAttribute('hidden', isAdmin);
+  document.querySelectorAll('#profilePage .profile-tier-summary').forEach((item) => { item.hidden = isAdmin; });
+  byId('profilePlusExpiry')?.toggleAttribute('hidden', isAdmin);
+  if (isAdmin) {
+    byId('subscriptionModal')?.setAttribute('hidden', '');
+    byId('subscriptionQrModal')?.setAttribute('hidden', '');
+  }
+}
+
+async function signIn(email, password, remember) {
+  const data = await api('/api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+  saveSession(data, remember);
+  rememberCurrentAccount(data.user, data.access_token);
+  updateUserLabels(data.user);
+  if (data.user.role !== 'admin') await loadTeamPoints();
+  showPage(defaultAccountPage(data.user));
+}
+
+async function registerAccount(payload) {
+  const data = await api('/api/auth/register', { method: 'POST', body: JSON.stringify(payload) });
+  saveSession(data, true);
+  rememberCurrentAccount(data.user, data.access_token);
+  updateUserLabels(data.user);
+  await loadTeamPoints();
+  byId('registerModal').hidden = true;
+  showPage('homePage');
+}
+
+function wireNavigation() {
+  document.querySelectorAll('[data-route], .nav-item, .nav-dash-btn').forEach((button) => button.addEventListener('click', (event) => {
+    event.preventDefault();
+    const route = button.dataset.route || (button.classList.contains('nav-dash-btn') ? 'dashboardPage' : ({ Home: 'homePage', Dashboard: 'dashboardPage', Activity: 'ecoPointsPage', EcoPoints: 'ecoPointsPage', Rewards: 'rewardsPage', Profile: 'profilePage', Admin: 'adminPage' }[button.textContent.trim()]));
+    if (route) { pendingActivityTab = button.dataset.activityTab || null; showPage(route); }
+  }));
+}
+
+async function loadRewards() {
+  const grid = byId('rewardsGrid');
+  if (!grid) return;
+  try {
+    const rewards = await api('/api/rewards');
+    grid.innerHTML = rewards.map((reward) => {
+      const icon = reward.name.includes('Bottle') ? '♻' : '☕';
+      const available = reward.stock > 0;
+      return `<article class="reward-item"><div class="reward-icon">${icon}</div><div class="reward-copy"><span class="reward-label">${available ? 'Available now' : 'Out of stock'}</span><h2>${reward.name}</h2><p>${reward.description}</p><strong>${reward.points_cost} pts</strong></div><button class="btn-primary reward-redeem" data-reward-id="${reward.id}" ${available ? '' : 'disabled'}>${available ? 'Redeem' : 'Out of stock'}</button><small>${available ? `${reward.stock} left` : 'Check back later'}</small></article>`;
+    }).join('');
+    grid.querySelectorAll('.reward-redeem').forEach((button) => button.addEventListener('click', () => redeemReward(Number(button.dataset.rewardId), button)));
+  } catch (error) {
+    grid.innerHTML = '<div class="empty-state">Unable to load rewards. Make sure the API server is running.</div>';
+  }
+}
+
+async function redeemReward(rewardId, button) {
+  try {
+    const rewards = await api('/api/rewards');
+    const reward = rewards.find((item) => item.id === rewardId);
+    if (!reward) return;
+    if (currentSessionUser()?.role === 'admin') openAdminRewardLockedModal();
+    else openRewardContactModal(reward);
+  } catch (error) {
+    setMessage(byId('rewardMessage'), error.message);
+  }
+}
+
+let activeSubscriptionUser = null;
+
+function subscriptionFeatures(role, tier) {
+  const isOrganization = role === 'organization';
+  const basic = isOrganization
+    ? ['Basic dashboard charts']
+    : ['Basic dashboard charts', 'Basic gift redemption'];
+  const plus = isOrganization
+    ? ['Richer dashboard charts']
+    : ['Richer dashboard charts', 'More gift redemption'];
+  if (!isOrganization) plus.push('Custom avatar and background', 'Colourful name', 'Plus badge');
+  return tier === 'plus' ? plus : basic;
+}
+
+function renderSubscriptionPlans(user) {
+  activeSubscriptionUser = user;
+  const basicList = byId('basicFeatureList');
+  const plusList = byId('plusFeatureList');
+  const render = (items) => items.map((item) => '<li><i data-lucide=\"check\"></i><span>' + escapeHtml(item) + '</span></li>').join('');
+  if (basicList) basicList.innerHTML = render(subscriptionFeatures(user.role, 'basic'));
+  if (plusList) plusList.innerHTML = render(subscriptionFeatures(user.role, 'plus'));
+  const isPlus = user.subscription_tier === 'plus';
+  const badge = byId('basicPlanBadge');
+  if (badge) { badge.hidden = false; badge.textContent = isPlus ? 'Previous plan' : 'Current plan'; }
+  const plusBadge = byId('plusPlanBadge');
+  if (plusBadge) plusBadge.textContent = isPlus ? 'Current plan' : 'Recommended';
+  const buy = byId('subscriptionBuyButton');
+  if (buy) { buy.disabled = isPlus; buy.innerHTML = isPlus ? 'Plus is active <i data-lucide=\"check\"></i>' : 'Upgrade to Plus <i data-lucide=\"arrow-up-right\"></i>'; }
+  const label = byId('profileTierLabel');
+  if (label) label.textContent = isPlus ? 'Plus' : 'Basic';
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function openSubscriptionModal() {
+  const user = currentSessionUser();
+  if (!user || user.role === 'admin') return;
+  renderSubscriptionPlans(user);
+  const modal = byId('subscriptionModal');
+  if (modal) { modal.hidden = false; byId('subscriptionBuyButton')?.focus(); }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function closeSubscriptionModal() {
+  const modal = byId('subscriptionModal');
+  if (modal) modal.hidden = true;
+}
+
+function openSubscriptionQrModal() {
+  if (activeSubscriptionUser?.subscription_tier === 'plus') return;
+  const modal = byId('subscriptionQrModal');
+  if (modal) { modal.hidden = false; byId('subscriptionConfirmButton')?.focus(); }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function closeSubscriptionQrModal() {
+  const modal = byId('subscriptionQrModal');
+  if (modal) modal.hidden = true;
+}
+
+function closeOrganizationApplicationModal() { const modal = byId('organizationApplicationModal'); if (modal) modal.style.display = 'none'; }
+function openOrganizationApplicationModal() { const modal = byId('organizationApplicationModal'); if (modal) { modal.style.display = 'flex'; byId('organizationName')?.focus(); } }
+function formatNotificationTime(value) { return new Date(value).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }); }
+
+async function loadNotifications() {
+  const list = byId('notificationList'); if (!list || !getToken()) return;
+  try {
+    const notifications = await api('/api/notifications', { headers: { Authorization: 'Bearer ' + getToken() } });
+    const unread = notifications.filter((item) => !item.is_read).length;
+    document.querySelectorAll('.notification-badge').forEach((badge) => { badge.hidden = unread === 0; badge.textContent = unread > 9 ? '9+' : unread; });
+    list.innerHTML = notifications.length ? notifications.map((item) => '<button class="notification-item ' + (item.is_read ? '' : 'unread') + '" data-notification-id="' + item.id + '"><span class="notification-item-icon"><i data-lucide="' + (item.kind === 'plus_upgrade' ? 'sparkles' : item.kind === 'organization_application' ? 'building-2' : item.kind === 'activity_creation' ? 'calendar-check' : 'bell') + '"></i></span><span><strong>' + escapeHtml(item.title) + '</strong><small>' + escapeHtml(item.message) + '</small><em>' + formatNotificationTime(item.created_at) + '</em></span></button>').join('') : '<div class="empty-state">You are all caught up.</div>';
+    list.querySelectorAll('[data-notification-id]').forEach((item) => item.addEventListener('click', async () => { await api('/api/notifications/' + item.dataset.notificationId + '/read', { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() } }); loadNotifications(); }));
+    if (window.lucide) window.lucide.createIcons();
+  } catch (error) { list.innerHTML = '<div class="empty-state">Unable to load notifications.</div>'; }
+}
+async function loadAdminQueue() {
+  const content = byId('adminQueueContent'); if (!content || currentSessionUser()?.role !== 'admin') return;
+  const token = getToken();
+  try {
+    const queue = await api('/api/admin/queue', { headers: { Authorization: 'Bearer ' + token } });
+    if (getToken() !== token || currentSessionUser()?.role !== 'admin') return;
+    const reviewButton = (path, id, decision) => '<button type="button" class="admin-queue-action" data-review-path="' + path + '" data-review-id="' + id + '" data-review-decision="' + decision + '">' + (decision === 'approved' ? 'Approve' : 'Decline') + '</button>';
+    const subscriptionRows = queue.subscriptions.map((item) => '<div class="admin-queue-row"><div><strong>Plus request from ' + escapeHtml(item.applicant_name) + '</strong><small>' + escapeHtml(item.applicant_email) + ' · ' + formatNotificationTime(item.created_at) + '</small></div><div>' + reviewButton('subscription-requests', item.id, 'approved') + reviewButton('subscription-requests', item.id, 'rejected') + '</div></div>').join('');
+    const organizationRows = queue.organizations.map((item) => '<div class="admin-queue-row"><div><strong>Organization: ' + escapeHtml(item.organization_name) + '</strong><small>' + escapeHtml(item.applicant_name) + ' · <button type="button" class="admin-document-button" data-document-id="' + item.id + '">' + escapeHtml(item.document_name) + '</button></small></div><div>' + reviewButton('organization-applications', item.id, 'approved') + reviewButton('organization-applications', item.id, 'rejected') + '</div></div>').join('');
+    const activityRows = queue.activities.map((item) => '<div class="admin-queue-row"><div><strong>Activity: ' + escapeHtml(item.title) + '</strong><small>' + escapeHtml(item.applicant_name) + ' · ' + escapeHtml(item.description) + '</small></div><div>' + reviewButton('activity-requests', item.id, 'approved') + reviewButton('activity-requests', item.id, 'rejected') + '</div></div>').join('');
+    const redemptionRows = (queue.redemptions || []).map((item) => '<div class="admin-queue-row"><div><strong>Reward: ' + escapeHtml(item.reward_name) + '</strong><small>' + escapeHtml(item.applicant_name) + ' · ' + Number(item.points_spent).toLocaleString() + ' points · ' + escapeHtml(item.contact_email) + '</small></div><div>' + reviewButton('redemptions', item.id, 'approved') + reviewButton('redemptions', item.id, 'rejected') + '</div></div>').join('');
+    const accountRows = queue.accounts.filter((item) => item.role !== 'admin').map((item) => '<div class="admin-queue-row"><div><strong>' + escapeHtml(item.full_name) + '</strong><small>' + escapeHtml(item.email) + ' · ' + item.role + ' · ' + item.subscription_tier + (item.is_active ? '' : ' · suspended') + '</small></div><div><button type="button" class="admin-queue-action" data-account-id="' + item.id + '" data-account-tier="' + (item.subscription_tier === 'plus' ? 'basic' : 'plus') + '">' + (item.subscription_tier === 'plus' ? 'Set Basic' : 'Grant Plus') + '</button><button type="button" class="admin-queue-action danger" data-account-id="' + item.id + '" data-account-status="' + (item.is_active ? 'ban' : 'activate') + '">' + (item.is_active ? 'Suspend' : 'Activate') + '</button><button type="button" class="admin-queue-action danger" data-account-id="' + item.id + '" data-account-status="delete">Close account</button></div></div>').join('');
+    content.innerHTML = '<section class="admin-queue-section"><h3>Plus requests</h3>' + (subscriptionRows || '<p class="card-muted">No pending Plus requests.</p>') + '</section><section class="admin-queue-section"><h3>Organization applications</h3>' + (organizationRows || '<p class="card-muted">No pending organization applications.</p>') + '</section><section class="admin-queue-section"><h3>Activity requests</h3>' + (activityRows || '<p class="card-muted">No pending activity requests.</p>') + '</section><section class="admin-queue-section"><h3>Reward redemptions</h3>' + (redemptionRows || '<p class="card-muted">No pending reward redemptions.</p>') + '</section><section class="admin-queue-section"><h3>Accounts</h3>' + (accountRows || '<p class="card-muted">No user accounts.</p>') + '</section>';
+    content.querySelectorAll('[data-review-path]').forEach((button) => button.addEventListener('click', () => performAdminAction(button, '/api/admin/' + button.dataset.reviewPath + '/' + button.dataset.reviewId + '/review', { decision: button.dataset.reviewDecision })));
+    content.querySelectorAll('[data-document-id]').forEach((button) => button.addEventListener('click', async () => { const response = await fetch(API_BASE + '/api/admin/organization-applications/' + button.dataset.documentId + '/document', { headers: { Authorization: 'Bearer ' + getToken() } }); if (!response.ok) return; const blob = await response.blob(); const url = URL.createObjectURL(blob); window.open(url, '_blank', 'noopener'); setTimeout(() => URL.revokeObjectURL(url), 60000); }));
+    content.querySelectorAll('[data-account-tier]').forEach((button) => button.addEventListener('click', () => performAdminAction(button, '/api/admin/accounts/' + button.dataset.accountId + '/subscription', { tier: button.dataset.accountTier })));
+    content.querySelectorAll('[data-account-status]').forEach((button) => button.addEventListener('click', () => performAdminAction(button, '/api/admin/accounts/' + button.dataset.accountId + '/status', { action: button.dataset.accountStatus })));
+    for (const account of queue.accounts.filter(item => item.is_closed)) {
+      content.querySelectorAll('[data-account-id="' + account.id + '"]').forEach(button => { button.disabled = true; });
+    }
+  } catch (error) { if (getToken() === token) content.innerHTML = '<div class="empty-state">' + escapeHtml(error.message) + ' Use Refresh to retry.</div>'; }
+}
+
+async function performAdminAction(button, path, payload) {
+  if (payload.action === 'delete' && !window.confirm('Close this account? Sign-in will be disabled and its profile will be redacted. Historical business records will be retained.')) return;
+  const token = getToken();
+  const buttons = button.closest('.admin-queue-row')?.querySelectorAll('button') || [button];
+  buttons.forEach(item => { item.disabled = true; });
+  try {
+    const result = await api(path, { method: 'POST', headers: { Authorization: 'Bearer ' + token }, body: JSON.stringify(payload) });
+    if (getToken() !== token) return;
+    setMessage(byId('adminMessage'), result.message || 'Account updated.', false);
+    await loadAdminQueue();
+  } catch (error) {
+    if (getToken() === token) { setMessage(byId('adminMessage'), error.message); buttons.forEach(item => { item.disabled = false; }); }
+  }
+}
+
+function loadProfilePreferences() {
+  const stored = JSON.parse(localStorage.getItem('ecopoints_11_profile') || '{}');
+  if (stored.name && byId('profileNameInput')) byId('profileNameInput').value = stored.name;
+  if (stored.email && byId('profileEmailInput')) byId('profileEmailInput').value = stored.email;
+  if (stored.phone && byId('profilePhoneInput')) byId('profilePhoneInput').value = stored.phone;
+  if (stored.language && byId('languageSetting')) byId('languageSetting').value = stored.language;
+  if (stored.picture) { byId('profileAvatar').style.backgroundImage = `url(${stored.picture})`; byId('profileAvatar').textContent = ''; }
+  if (stored.theme) localStorage.setItem('ecopoints_11_theme', stored.theme);
+  if (stored.colorMode) localStorage.setItem('ecopoints_11_color_mode', stored.colorMode);
+  applyPreferences();
+  applyVisualPreferences();
+  if (byId('languageSetting')) setLocale(stored.language || currentLocale());
+  if (byId('colorModeSetting')) byId('colorModeSetting').value = currentColorMode();
+  const user = currentSessionUser();
+  if (user) renderSubscriptionPlans(user);
+  if (user) updateUserLabels(user);
+}
+
+function applyPreferences() { applyVisualPreferences(); }
+
+const DEFAULT_AVATARS = [
+  { id: 'leaf', label: 'Leaf', src: 'assets/avatar-leaf.svg' },
+  { id: 'sprout', label: 'Sprout', src: 'assets/avatar-sprout.svg' },
+  { id: 'planet', label: 'Planet', src: 'assets/avatar-planet.svg' },
+  { id: 'recycle', label: 'Recycle', src: 'assets/avatar-recycle.svg' }
+];
+
+const LOCALE_TEXT = {
+  en: { profile: 'Your profile and preferences', profileIntro: 'Manage personal details and the way EcoPoints feels.', personal: 'Personal information', personalIntro: 'Update the details used for your EcoPoints account.', preferences: 'Preferences', language: 'Language', theme: 'Dark mode', notifications: 'Notifications', colorblind: 'Color vision mode', normal: 'Standard', protanopia: 'Protanopia', deuteranopia: 'Deuteranopia', tritanopia: 'Tritanopia', none: 'None', save: 'Save changes', avatar: 'Choose your avatar', defaults: 'Default avatars', upload: 'Upload image', plusOnly: 'This feature is available to Plus users only.', close: 'Close' },
+  zh: { profile: '个人资料与偏好设置', profileIntro: '管理个人信息和 EcoPoints 使用体验。', personal: '个人信息', personalIntro: '更新 EcoPoints 账户使用的个人资料。', preferences: '偏好设置', language: '语言', theme: '深色模式', notifications: '通知', colorblind: '色觉模式', normal: '标准', protanopia: '红色盲', deuteranopia: '绿色盲', tritanopia: '蓝黄色盲', none: '关闭', save: '保存更改', avatar: '选择头像', defaults: '默认头像', upload: '上传图片', plusOnly: '该功能仅Plus版本用户可使用', close: '关闭' },
+  ms: { profile: 'Profil dan pilihan anda', profileIntro: 'Urus maklumat peribadi dan pengalaman EcoPoints anda.', personal: 'Maklumat peribadi', personalIntro: 'Kemas kini maklumat akaun EcoPoints anda.', preferences: 'Pilihan', language: 'Bahasa', theme: 'Mod gelap', notifications: 'Pemberitahuan', colorblind: 'Mod penglihatan warna', normal: 'Standard', protanopia: 'Protanopia', deuteranopia: 'Deuteranopia', tritanopia: 'Tritanopia', none: 'Tiada', save: 'Simpan perubahan', avatar: 'Pilih avatar', defaults: 'Avatar lalai', upload: 'Muat naik imej', plusOnly: 'Ciri ini hanya tersedia untuk pengguna Plus.', close: 'Tutup' }
+};
+
+function currentLocale() { return localStorage.getItem('ecopoints_11_locale') || 'en'; }
+function currentTheme() { return localStorage.getItem('ecopoints_11_theme') || 'light'; }
+function currentColorMode() { return localStorage.getItem('ecopoints_11_color_mode') || 'none'; }
+function applyVisualPreferences() {
+  const theme = currentTheme(); const mode = currentColorMode();
+  document.body.classList.toggle('dark-mode', theme === 'dark');
+  document.body.classList.remove('colorblind-protanopia', 'colorblind-deuteranopia', 'colorblind-tritanopia');
+  if (mode !== 'none') document.body.classList.add('colorblind-' + mode);
+  document.querySelectorAll('[data-theme-toggle]').forEach((button) => { button.setAttribute('aria-pressed', String(theme === 'dark')); button.innerHTML = '<i data-lucide="' + (theme === 'dark' ? 'sun' : 'moon') + '"></i>'; button.title = theme === 'dark' ? 'Use light mode' : 'Use dark mode'; });
+  if (window.lucide) window.lucide.createIcons();
+  document.dispatchEvent(new Event('ecopoints:appearance'));
+}
+function setLocale(locale) {
+  const next = LOCALE_TEXT[locale] ? locale : 'en'; localStorage.setItem('ecopoints_11_locale', next);
+  document.documentElement.lang = next === 'zh' ? 'zh-CN' : next;
+  const copy = LOCALE_TEXT[next];
+  const title = byId('profilePage')?.querySelector('.utility-header h1'); if (title) title.textContent = copy.profile;
+  const intro = byId('profilePage')?.querySelector('.utility-header p'); if (intro) intro.textContent = copy.profileIntro;
+  document.querySelectorAll('[data-i18n]').forEach((item) => { const key = item.dataset.i18n; if (!copy[key]) return; const textNode = [...item.childNodes].find((node) => node.nodeType === Node.TEXT_NODE); if (textNode) textNode.nodeValue = copy[key]; else item.textContent = copy[key]; });
+  applyStaticLocale(next);
+  if (typeof loadMottos === 'function') loadMottos();
+  byId('languageSetting') && (byId('languageSetting').value = next);
+}
+const STATIC_LOCALE = {
+  Home: { zh: '首页', ms: 'Utama' }, Dashboard: { zh: '仪表板', ms: 'Papan pemuka' }, Activity: { zh: '活动', ms: 'Aktiviti' }, Rewards: { zh: '奖励', ms: 'Ganjaran' }, Profile: { zh: '个人资料', ms: 'Profil' }, Admin: { zh: '管理', ms: 'Pentadbir' }, Notifications: { zh: '通知', ms: 'Pemberitahuan' }, Preferences: { zh: '偏好设置', ms: 'Pilihan' }, Language: { zh: '语言', ms: 'Bahasa' }, 'Color vision mode': { zh: '色觉模式', ms: 'Mod penglihatan warna' }, 'Personal information': { zh: '个人信息', ms: 'Maklumat peribadi' }, 'Save changes': { zh: '保存更改', ms: 'Simpan perubahan' }, 'Full name': { zh: '姓名', ms: 'Nama penuh' }, Email: { zh: '邮箱', ms: 'E-mel' }, Phone: { zh: '电话', ms: 'Telefon' }, 'Switch account': { zh: '切换账号', ms: 'Tukar akaun' }, 'Add account': { zh: '添加账号', ms: 'Tambah akaun' }, 'Sign out': { zh: '退出登录', ms: 'Log keluar' }, Refresh: { zh: '刷新', ms: 'Muat semula' }, Administrator: { zh: '管理员', ms: 'Pentadbir' }
+};
+function applyStaticLocale(locale) {
+  const nodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let node;
+  while ((node = nodes.nextNode())) { const value = node.nodeValue.trim(); if (!value) continue; const key = Object.keys(STATIC_LOCALE).find((candidate) => candidate === value || STATIC_LOCALE[candidate].zh === value || STATIC_LOCALE[candidate].ms === value); if (!key) continue; node.nodeValue = node.nodeValue.replace(value, locale === 'en' ? key : (STATIC_LOCALE[key][locale] || key)); }
+}
+function toggleTheme() { localStorage.setItem('ecopoints_11_theme', currentTheme() === 'dark' ? 'light' : 'dark'); applyVisualPreferences(); }
+function setColorMode(value) { localStorage.setItem('ecopoints_11_color_mode', value || 'none'); applyVisualPreferences(); }
+function avatarDataUrl(src) { return new URL(src, document.baseURI).href; }
+function profileUser() { return currentSessionUser() || {}; }
+function openAvatarModal() {
+  const modal = byId('avatarModal'); if (!modal) return;
+  const user = profileUser(); const isPlus = user.role === 'admin' || user.subscription_tier === 'plus';
+  const copy = LOCALE_TEXT[currentLocale()];
+  byId('avatarDefaultOptions').innerHTML = DEFAULT_AVATARS.map((avatar) => '<button type="button" class="avatar-choice" data-avatar-value="' + avatarDataUrl(avatar.src) + '" title="' + avatar.label + '"><img src="' + avatar.src + '" alt=""><small>' + avatar.label + '</small></button>').join('');
+  byId('avatarUploadOption').innerHTML = '<i data-lucide="' + (isPlus ? 'upload' : 'lock-keyhole') + '"></i><span>' + copy.upload + '</span>' + (isPlus ? '' : '<small>' + copy.plusOnly + '</small>');
+  byId('avatarUploadOption').classList.toggle('is-locked', !isPlus);
+  modal.hidden = false; if (window.lucide) window.lucide.createIcons();
+}
+async function persistProfile(patch) {
+  const user = profileUser(); const nextUser = { ...user, ...patch };
+  if (patch.avatar_url) renderAccountAvatar(nextUser);
+  const storage = localStorage.getItem('ecopoints_11_token') ? localStorage : sessionStorage; storage.setItem('ecopoints_11_user', JSON.stringify(nextUser)); rememberCurrentAccount(nextUser, getToken()); updateUserLabels(nextUser);
+  try { const response = await api('/api/me', { method: 'PUT', headers: { Authorization: 'Bearer ' + getToken() }, body: JSON.stringify({ full_name: nextUser.full_name, email: nextUser.email, phone: nextUser.phone ?? null, avatar_url: nextUser.avatar_url ?? null }) }); storage.setItem('ecopoints_11_user', JSON.stringify(response)); rememberCurrentAccount(response, getToken()); updateUserLabels(response); return response; } catch (error) { setMessage(byId('profileMessage'), error.message); return nextUser; }
+}
+function openProfileInfoModal() { const modal = byId('profileInfoModal'); if (!modal) return; const user = profileUser(); byId('profileNameInput').value = user.full_name || ''; byId('profileEmailInput').value = user.email || ''; byId('profilePhoneInput').value = user.phone || ''; modal.hidden = false; byId('profileNameInput').focus(); }
+function closeModal(id) { const modal = byId(id); if (modal) modal.hidden = true; }
+function setupProfileExperience() {
+  const profile = byId('profilePage'); if (!profile) return;
+  const settings = profile.querySelector('.settings-card');
+  if (settings) { settings.innerHTML = '<h2 data-i18n="preferences">Preferences</h2><label data-i18n="language">Language<select id="languageSetting"><option value="en">English</option><option value="zh">中文</option><option value="ms">Bahasa Melayu</option></select></label><label data-i18n="colorblind">Color vision mode<select id="colorModeSetting"><option value="none">Standard</option><option value="protanopia">Protanopia</option><option value="deuteranopia">Deuteranopia</option><option value="tritanopia">Tritanopia</option></select></label><label class="switch-row"><span data-i18n="notifications">Notifications</span><input id="notificationSetting" type="checkbox" checked><span class="switch-ui"></span></label>'; }
+  const card = profile.querySelector('.profile-card');
+  if (card) { card.querySelector('#profilePictureInput')?.closest('label')?.remove(); card.querySelector('#saveProfileBtn')?.remove(); card.querySelectorAll('#profileNameInput, #profileEmailInput, #profilePhoneInput').forEach((input) => input.closest('label')?.remove()); const button = document.createElement('button'); button.type = 'button'; button.className = 'btn-primary compact-button profile-info-open'; button.dataset.i18n = 'personal'; button.textContent = LOCALE_TEXT[currentLocale()].personal; card.insertBefore(button, byId('profileMessage')); button.addEventListener('click', openProfileInfoModal); }
+  byId('profileAvatar')?.addEventListener('click', openAvatarModal);
+  setLocale(currentLocale()); applyVisualPreferences();
+}
+function ensureProfileModals() {
+  if (!byId('avatarModal')) {
+    const modal = document.createElement('div'); modal.id = 'avatarModal'; modal.className = 'profile-modal'; modal.hidden = true; modal.innerHTML = '<div class="profile-modal-backdrop" data-close-profile-modal></div><div class="profile-modal-card avatar-modal-card"><button type="button" class="modal-close" data-close-profile-modal aria-label="Close"><i data-lucide="x"></i></button><h2 data-i18n="avatar">Choose your avatar</h2><p class="card-muted" data-i18n="defaults">Default avatars</p><div id="avatarDefaultOptions" class="avatar-default-options"></div><button type="button" id="avatarUploadOption" class="avatar-upload-option"></button><input id="avatarFileInput" type="file" accept="image/png,image/jpeg,image/webp" hidden></div>'; document.body.appendChild(modal);
+  }
+  if (!byId('profileInfoModal')) {
+    const modal = document.createElement('div'); modal.id = 'profileInfoModal'; modal.className = 'profile-modal'; modal.hidden = true; modal.innerHTML = '<div class="profile-modal-backdrop" data-close-profile-modal></div><div class="profile-modal-card profile-info-modal-card"><button type="button" class="modal-close" data-close-profile-modal aria-label="Close"><i data-lucide="x"></i></button><h2 data-i18n="personal">Personal information</h2><p class="card-muted" data-i18n="personalIntro">Update the details used for your EcoPoints account.</p><form id="profileInfoForm" class="profile-info-form"><label>Full name<input id="profileNameInput" required minlength="2" maxlength="120"></label><label>Email<input id="profileEmailInput" type="email" required></label><label>Phone<input id="profilePhoneInput" type="tel" maxlength="40"></label><button type="submit" class="btn-primary" data-i18n="save">Save changes</button><p id="profileInfoMessage" class="shop-message" role="status"></p></form></div>'; document.body.appendChild(modal);
+  }
+  document.querySelectorAll('[data-close-profile-modal]').forEach((button) => button.addEventListener('click', () => { button.closest('.profile-modal').hidden = true; }));
+  byId('avatarDefaultOptions')?.addEventListener('click', async (event) => { const choice = event.target.closest('[data-avatar-value]'); if (!choice) return; try { await persistProfile({ avatar_url: choice.dataset.avatarValue }); closeModal('avatarModal'); } catch (error) { setMessage(byId('profileMessage'), error.message); } });
+  byId('avatarUploadOption')?.addEventListener('click', () => { if (profileUser().role === 'admin' || profileUser().subscription_tier === 'plus') byId('avatarFileInput')?.click(); else showPlusOnlyModal(); });
+  byId('avatarFileInput')?.addEventListener('change', (event) => { const file = event.target.files?.[0]; if (!file) return; const reader = new FileReader(); reader.onload = async () => { try { await persistProfile({ avatar_url: reader.result }); closeModal('avatarModal'); } catch (error) { setMessage(byId('profileMessage'), error.message); } }; reader.readAsDataURL(file); });
+  byId('profileInfoForm')?.addEventListener('submit', async (event) => { event.preventDefault(); const message = byId('profileInfoMessage'); setMessage(message, 'Saving changes...', false); try { await persistProfile({ full_name: byId('profileNameInput').value.trim(), email: byId('profileEmailInput').value.trim(), phone: byId('profilePhoneInput').value.trim() }); setMessage(message, 'Profile updated.', false); setTimeout(() => closeModal('profileInfoModal'), 500); } catch (error) { setMessage(message, error.message); } });
+  if (window.lucide) window.lucide.createIcons();
+}
+function showPlusOnlyModal() {
+  const copy = LOCALE_TEXT[currentLocale()]; const modal = document.createElement('div'); modal.className = 'profile-modal'; modal.innerHTML = '<div class="profile-modal-backdrop"></div><div class="profile-modal-card profile-alert-card"><div class="profile-alert-icon"><i data-lucide="lock-keyhole"></i></div><h2>' + copy.plusOnly + '</h2><button type="button" class="btn-primary">' + copy.close + '</button></div>'; document.body.appendChild(modal); modal.querySelector('button').addEventListener('click', () => modal.remove()); if (window.lucide) window.lucide.createIcons();
+}
+function wireThemeButtons() {
+  document.querySelectorAll('.top-header, .utility-header').forEach((header) => {
+    if (header.querySelector('[data-theme-toggle]')) return;
+    const button = document.createElement('button'); button.type = 'button'; button.className = 'theme-toggle'; button.dataset.themeToggle = ''; button.setAttribute('aria-label', 'Toggle dark mode'); button.addEventListener('click', toggleTheme);
+    const accountTools = header.querySelector('.utility-account-tools, .header-right'); if (accountTools) accountTools.insertBefore(button, accountTools.firstChild); else header.appendChild(button);
+  });
+  applyVisualPreferences();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) window.lucide.createIcons();
+  ensureProfileModals();
+  byId('logoutBtn')?.remove();
+  byId('profileSubscriptionSection')?.removeAttribute('hidden');
+  document.querySelector('#adminPage .admin-grid > .utility-card:first-child')?.remove();
+  wireUtilityAccountTools();
+  setupProfileExperience();
+  wireThemeButtons();
+  byId('languageSetting')?.addEventListener('change', (event) => setLocale(event.target.value));
+  byId('colorModeSetting')?.addEventListener('change', (event) => { setColorMode(event.target.value); const profile = JSON.parse(localStorage.getItem('ecopoints_11_profile') || '{}'); profile.colorMode = event.target.value; localStorage.setItem('ecopoints_11_profile', JSON.stringify(profile)); });
+  teamWireActivityPage();
+  wireMottos();
+  const loginForm = byId('loginForm');
+  const authMessage = byId('authMessage');
+  const registerMessage = byId('registerMessage');
+  const registerModal = byId('registerModal');
+
+  loginForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    setMessage(authMessage, 'Signing in...', false);
+    try {
+      await signIn(byId('email').value.trim(), byId('password').value, byId('rememberMe').checked);
+    } catch (error) {
+      setMessage(authMessage, error.message);
+    }
+  });
+
+  byId('togglePassword')?.addEventListener('click', () => {
+    const password = byId('password');
+    password.type = password.type === 'password' ? 'text' : 'password';
+  });
+
+  byId('googleSignInBtn')?.addEventListener('click', () => {
+    setMessage(authMessage, 'Google Sign-In is not configured for this local demo. Use email registration or the demo account.');
+  });
+
+  byId('registerLink')?.addEventListener('click', (event) => {
+    event.preventDefault(); registerModal.hidden = false; byId('registerName')?.focus();
+  });
+  document.querySelectorAll('[data-close-register]').forEach((button) => button.addEventListener('click', () => { registerModal.hidden = true; }));
+
+  byId('registerForm')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    setMessage(registerMessage, 'Creating account...', false);
+    try {
+      await registerAccount({
+        full_name: byId('registerName').value.trim(),
+        email: byId('registerEmail').value.trim(),
+        password: byId('registerPassword').value,
+        role: byId('registerRole').value,
+      });
+    } catch (error) {
+      setMessage(registerMessage, error.message);
+    }
+  });
+
+  wireNavigation();
+  byId('legacySaveProfileBtn')?.addEventListener('click', () => {
+    const previous = JSON.parse(localStorage.getItem('ecopoints_11_profile') || '{}');
+    const profile = { ...previous, name: byId('profileNameInput').value.trim(), email: byId('profileEmailInput').value.trim(), phone: byId('profilePhoneInput').value.trim(), language: byId('languageSetting').value, font: byId('fontSetting').value, theme: byId('themeSetting').checked ? 'dark' : 'light', notifications: byId('notificationSetting').checked };
+    localStorage.setItem('ecopoints_11_profile', JSON.stringify(profile));
+    byId('profileName').textContent = profile.name || 'EcoPoints member';
+    byId('profileEmail').textContent = profile.email;
+    byId('profileAvatar').textContent = (profile.name || 'EP').split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+    setMessage(byId('profileMessage'), 'Profile preferences saved.', false);
+  });
+  byId('legacyProfilePictureInput')?.addEventListener('change', (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => { byId('profileAvatar').style.backgroundImage = `url(${reader.result})`; byId('profileAvatar').textContent = ''; const profile = JSON.parse(localStorage.getItem('ecopoints_11_profile') || '{}'); profile.picture = reader.result; localStorage.setItem('ecopoints_11_profile', JSON.stringify(profile)); };
+    reader.readAsDataURL(file);
+  });
+  ['languageSetting', 'fontSetting', 'themeSetting', 'notificationSetting'].forEach((id) => byId(id)?.addEventListener('change', applyPreferences));
+  byId('openSubscriptionButton')?.addEventListener('click', openSubscriptionModal);
+  document.querySelectorAll('[data-close-subscription]').forEach((button) => button.addEventListener('click', closeSubscriptionModal));
+  byId('subscriptionModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeSubscriptionModal(); });
+  byId('subscriptionBuyButton')?.addEventListener('click', openSubscriptionQrModal);
+  document.querySelectorAll('[data-close-qr]').forEach((button) => button.addEventListener('click', closeSubscriptionQrModal));
+  byId('subscriptionQrModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeSubscriptionQrModal(); });
+  byId('subscriptionConfirmButton')?.addEventListener('click', async () => {
+    const message = byId('subscriptionQrMessage');
+    setMessage(message, 'Confirming your Plus upgrade...', false);
+    try {
+      const result = await api('/api/subscription/upgrade', { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() }, body: JSON.stringify({ payment_reference: 'QR payment confirmed by account holder' }) });
+      const user = currentSessionUser();
+      const upgraded = { ...user };
+      const storage = localStorage.getItem('ecopoints_11_token') ? localStorage : sessionStorage;
+      storage.setItem('ecopoints_11_user', JSON.stringify(upgraded));
+      activeSubscriptionUser = upgraded;
+      renderSubscriptionPlans(upgraded);
+      setMessage(byId('profileMessage'), 'Payment submitted. An administrator will verify it before Plus is activated.', false);
+      closeSubscriptionQrModal();
+      closeSubscriptionModal();
+    } catch (error) {
+      setMessage(message, error.message);
+    }
+  });
+  byId('openOrganizationApplicationButton')?.addEventListener('click', openOrganizationApplicationModal);
+  document.querySelectorAll('[data-close-organization-application]').forEach((button) => button.addEventListener('click', closeOrganizationApplicationModal));
+  byId('organizationApplicationModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeOrganizationApplicationModal(); });
+  byId('organizationApplicationForm')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = byId('organizationApplicationMessage');
+    const file = byId('organizationDocument')?.files?.[0];
+    if (!file) return setMessage(message, 'Choose a proof document.');
+    setMessage(message, 'Submitting application...', false);
+    try {
+      const form = new FormData();
+      form.append('organization_name', byId('organizationName').value.trim());
+      form.append('registration_number', byId('organizationRegistrationNumber').value.trim());
+      form.append('document', file);
+      await api('/api/organization/apply', { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() }, body: form });
+      setMessage(byId('profileMessage'), 'Organization application submitted for review.', false);
+      byId('organizationApplicationForm').reset();
+      closeOrganizationApplicationModal();
+      loadNotifications();
+    } catch (error) { setMessage(message, error.message); }
+  });
+  document.querySelectorAll('.notification-btn').forEach((button) => button.addEventListener('click', toggleNotifications));
+  document.querySelectorAll('[data-account-menu-toggle]').forEach((button) => button.addEventListener('click', () => { const menu = byId('accountPopover'); if (menu.hidden && getToken()) openAccountPopover(button); else closeAccountPopover(); }));
+  byId('closeNotificationButton')?.addEventListener('click', closeNotificationPopover);
+  byId('switchAccountButton')?.addEventListener('click', openAccountSwitchModal);
+  byId('addAccountButton')?.addEventListener('click', addAccountAndReturnToLogin);
+  byId('accountModalAddButton')?.addEventListener('click', addAccountAndReturnToLogin);
+  byId('logoutMenuButton')?.addEventListener('click', () => { closeAccountPopover(); clearSession(); showPage('loginPage'); });
+  document.querySelectorAll('[data-close-account-switch]').forEach((button) => button.addEventListener('click', closeAccountSwitchModal));
+  byId('accountSwitchModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeAccountSwitchModal(); });
+  byId('accountSwitchModal')?.querySelector('.card-muted')?.replaceChildren(document.createTextNode('Choose a saved account to continue.'));
+  byId('accountDeleteButton')?.addEventListener('click', deleteSelectedAccount);
+  byId('accountSwitchForm')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = byId('accountSwitchMessage');
+    setMessage(message, 'Signing in...', false);
+    try {
+      const data = await api('/api/auth/login', { method: 'POST', body: JSON.stringify({ email: byId('accountSwitchEmail').value, password: byId('accountSwitchPassword').value }) });
+      const account = accountStore().find(item => item.email === data.user.email);
+      saveSession(data, account?.storage_scope === 'local');
+      rememberCurrentAccount(data.user, data.access_token);
+      closeAccountSwitchModal();
+      updateUserLabels(data.user);
+      if (data.user.role !== 'admin') loadTeamPoints();
+      loadNotifications();
+      byId('accountSwitchPassword').value = '';
+      showPage(defaultAccountPage(data.user));
+    } catch (error) { setMessage(message, error.message); }
+  });
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.notification-btn, #notificationPopover')) closeNotificationPopover();
+    if (!event.target.closest('[data-account-menu-toggle], #accountPopover')) closeAccountPopover();
+  });
+  window.addEventListener('resize', () => {
+    const notifications = byId('notificationPopover');
+    if (!notifications.hidden) positionPopover(notifications, document.querySelector('.notification-btn[aria-expanded="true"]'));
+    const menu = byId('accountPopover');
+    if (!menu.hidden) positionPopover(menu, document.querySelector('[data-account-menu-toggle][aria-expanded="true"]'));
+  });
+  byId('refreshAdminQueueButton')?.addEventListener('click', loadAdminQueue);
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    closeNotificationPopover();
+    closeAccountPopover();
+    closeAccountSwitchModal();
+    if (byId('subscriptionQrModal') && !byId('subscriptionQrModal').hidden) closeSubscriptionQrModal();
+    else if (byId('subscriptionModal') && !byId('subscriptionModal').hidden) closeSubscriptionModal();
+  });
+  byId('adminInitiateActivityButton')?.addEventListener('click', () => {
+    const user = JSON.parse(localStorage.getItem('ecopoints_11_user') || sessionStorage.getItem('ecopoints_11_user') || 'null');
+    if (user?.role !== 'admin') { setMessage(byId('adminMessage'), 'Administrator access is required.'); return; }
+    byId('adminInitiativeModal').style.display = 'flex';
+    byId('adminInitiativeName')?.focus();
+    if (window.lucide) window.lucide.createIcons();
+  });
+  const closeAdminInitiativeModal = () => { const modal = byId('adminInitiativeModal'); if (modal) modal.style.display = 'none'; };
+  document.querySelectorAll('[data-close-admin-initiative]').forEach((button) => button.addEventListener('click', closeAdminInitiativeModal));
+  byId('adminInitiativeModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeAdminInitiativeModal(); });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && byId('adminInitiativeModal')?.style.display === 'flex') closeAdminInitiativeModal(); });
+  byId('adminInitiativeForm')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = byId('adminInitiativeMessage');
+    setMessage(message, 'Publishing activity...', false);
+    try {
+      const initiative = await api('/api/admin/initiatives', { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() }, body: JSON.stringify({ title: byId('adminInitiativeName').value.trim(), activity_date: byId('adminInitiativeDate').value, start_time: byId('adminInitiativeStartTime').value, end_time: byId('adminInitiativeEndTime').value, location: byId('adminInitiativeLocation').value.trim(), description: byId('adminInitiativeDescription').value.trim() }) });
+      setMessage(byId('adminMessage'), '“' + initiative.title + '” is now published in Volunteering Initiatives.', false);
+      teamShowPublishedInitiative(initiative);
+      byId('adminInitiativeForm').reset();
+      closeAdminInitiativeModal();
+    } catch (error) {
+      setMessage(message, error.message);
+    }
+  });
+  byId('adminCreateRewardButton')?.addEventListener('click', () => {
+    if (currentSessionUser()?.role !== 'admin') { setMessage(byId('adminMessage'), 'Administrator access is required.'); return; }
+    byId('adminRewardModal').style.display = 'flex';
+    byId('adminRewardName')?.focus();
+    if (window.lucide) window.lucide.createIcons();
+  });
+  const closeAdminRewardModal = () => { const modal = byId('adminRewardModal'); if (modal) modal.style.display = 'none'; };
+  document.querySelectorAll('[data-close-admin-reward]').forEach((button) => button.addEventListener('click', closeAdminRewardModal));
+  byId('adminRewardModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeAdminRewardModal(); });
+  byId('adminRewardForm')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = byId('adminRewardMessage');
+    setMessage(message, 'Publishing reward...', false);
+    try {
+      const reward = await api('/api/admin/rewards', { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() }, body: JSON.stringify({ name: byId('adminRewardName').value.trim(), description: byId('adminRewardDescription').value.trim(), points_cost: Number(byId('adminRewardPoints').value), stock: Number(byId('adminRewardStock').value), icon: byId('adminRewardIcon').value }) });
+      setMessage(byId('adminMessage'), '“' + reward.name + '” is now available in Rewards.', false);
+      byId('adminRewardForm').reset();
+      closeAdminRewardModal();
+      await loadRewards();
+      await loadTeamRewards();
+    } catch (error) {
+      setMessage(message, error.message);
+    }
+  });
+  document.querySelectorAll('[data-close-reward-contact]').forEach((button) => button.addEventListener('click', closeRewardContactModal));
+  byId('rewardContactModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeRewardContactModal(); });
+  document.querySelectorAll('[data-close-admin-reward-locked]').forEach((button) => button.addEventListener('click', closeAdminRewardLockedModal));
+  byId('adminRewardLockedModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeAdminRewardLockedModal(); });
+  document.querySelectorAll('[data-close-reward-points-locked]').forEach((button) => button.addEventListener('click', closeRewardPointsLockedModal));
+  byId('rewardPointsLockedModal')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeRewardPointsLockedModal(); });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (byId('adminRewardModal')?.style.display === 'flex') closeAdminRewardModal();
+    if (byId('rewardContactModal')?.style.display === 'flex') closeRewardContactModal();
+    if (byId('adminRewardLockedModal')?.style.display === 'flex') closeAdminRewardLockedModal();
+    if (byId('rewardPointsLockedModal')?.style.display === 'flex') closeRewardPointsLockedModal();
+  });
+  byId('rewardContactForm')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!pendingReward) return;
+    const message = byId('rewardContactMessage');
+    setMessage(message, 'Confirming redemption...', false);
+    try {
+      const result = await api('/api/rewards/' + pendingReward.id + '/redeem', { method: 'POST', headers: { Authorization: 'Bearer ' + getToken() }, body: JSON.stringify({ contact_phone: byId('rewardContactPhone').value.trim(), contact_email: byId('rewardContactEmail').value.trim() }) });
+      setMessage(byId('team-rewardMessage'), result.message + '. ' + result.remaining_points + ' points remaining.', false);
+      closeRewardContactModal();
+      await loadTeamPoints();
+      await loadRewards();
+      await loadTeamRewards();
+    } catch (error) {
+      setMessage(message, error.message);
+    }
+  });
+  const savedUser = localStorage.getItem('ecopoints_11_user') || sessionStorage.getItem('ecopoints_11_user');
+  if (getToken() && savedUser) {
+    refreshCurrentUser().then(user => {
+      if (!user) { if (!getToken()) showPage('loginPage'); return; }
+      if (user.role !== 'admin') loadTeamPoints();
+      loadNotifications();
+      showPage(defaultAccountPage(user));
+    });
+  }
+});
+
+
+// WEB AUDIO API - ASMR Interactive Sounds
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+let isAudioEnabled = true;
+
+function initAudio() {
+    if (!audioCtx) {
+        audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+}
+
+function playTone(freq, type, duration, vol=0.1) {
+    if (!isAudioEnabled || !audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    
+    gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+    
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+}
+
+// Droplet Pop (General clicks)
+function playDroplet() {
+    initAudio();
+    playTone(800, 'sine', 0.1, 0.15);
+    setTimeout(() => playTone(1200, 'sine', 0.1, 0.08), 30);
+}
+
+// Tactile Snap (Switches/Inputs)
+function playSnap() {
+    initAudio();
+    playTone(150, 'triangle', 0.05, 0.2);
+    setTimeout(() => playTone(250, 'square', 0.02, 0.1), 10);
+}
+
+// Air Chime (Success / Save / Redeem)
+function playChime() {
+    initAudio();
+    playTone(523.25, 'sine', 0.6, 0.1); // C5
+    setTimeout(() => playTone(659.25, 'sine', 0.6, 0.1), 100); // E5
+    setTimeout(() => playTone(783.99, 'sine', 0.8, 0.1), 200); // G5
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Inject audio toggle
+    const audioBtn = document.createElement('button');
+    audioBtn.type = 'button';
+    audioBtn.className = 'audio-control';
+    audioBtn.setAttribute('aria-label', 'Mute interface sounds');
+    audioBtn.setAttribute('aria-pressed', 'true');
+    audioBtn.title = 'Mute interface sounds';
+    audioBtn.innerHTML = '<i data-lucide="volume-2"></i>';
+    document.body.appendChild(audioBtn);
+    
+    // Refresh lucide icons for newly added elements
+    if(window.lucide) window.lucide.createIcons();
+
+    audioBtn.addEventListener('click', () => {
+        isAudioEnabled = !isAudioEnabled;
+        audioBtn.innerHTML = isAudioEnabled ? '<i data-lucide="volume-2"></i>' : '<i data-lucide="volume-x"></i>';
+        audioBtn.setAttribute('aria-pressed', String(isAudioEnabled));
+        audioBtn.setAttribute('aria-label', isAudioEnabled ? 'Mute interface sounds' : 'Turn on interface sounds');
+        audioBtn.title = isAudioEnabled ? 'Mute interface sounds' : 'Turn on interface sounds';
+        if(window.lucide) window.lucide.createIcons();
+    });
+
+    // Attach sounds to interactables
+    document.body.addEventListener('click', (e) => {
+        const target = e.target.closest('button, a, .nav-item');
+        if (target === audioBtn) return;
+        if (target) {
+            // If it's a primary action like sign in, redeem, save, register
+            if (target.classList.contains('btn-primary') || target.textContent.trim().toLowerCase().includes('save') || target.textContent.trim().toLowerCase().includes('redeem')) {
+                playChime();
+            } else {
+                playDroplet();
+            }
+        }
+    });
+
+    document.body.addEventListener('change', (e) => {
+        const target = e.target;
+        if (target.tagName === 'INPUT' && (target.type === 'checkbox' || target.type === 'radio') || target.tagName === 'SELECT') {
+            playSnap();
+        }
+    });
+});
+
+</script>
+<script src="transport.js"></script>
+<script src="admin-rules.js"></script>
+</body>
+</html>
