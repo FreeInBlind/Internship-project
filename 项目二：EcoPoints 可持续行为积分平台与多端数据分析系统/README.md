@@ -169,19 +169,6 @@ flutter test
 - 看板线性外推和异常标记是探索性分析，不是经过验证的预测模型。
 - 页面仍通过 Google Fonts 与 CDN 加载部分字体及图标；ECharts 随源码本地提供。
 - 项目包含公开演示管理员约定，后端启动也会将该演示邮箱对应账号设为管理员；对外部署前需要调整演示账号逻辑及密钥配置。
-
-## GitHub 手动上传范围
-
-建议上传完整、可复现的源码：根目录 HTML/CSS/JS、motto*.txt、backend/、mobile/ 的源码及项目配置、database/、sql/schema.sql、assets/、tests/ 的测试源码与模拟 GPX，以及 README、设计文档、辅助脚本、.env.example、.gitignore、.gitattributes 和 mobile/pubspec.lock。assets/vendor/ 中的 ECharts 文件及 LICENSE/NOTICE 应一起保留。Android Gradle wrapper 属于构建工具，gradlew、gradlew.bat、gradle/wrapper/ 可保留。
-
-不要上传以下本地文件：
-
-- .env、其他真实环境配置、API 密钥、证书私钥或 Android 签名密钥。
-- backend_run.log、backend_error.log 等日志；虚拟环境、__pycache__/、.pyc、测试临时目录。
-- mobile/.dart_tool/、mobile/build/、mobile/android/.gradle/、mobile/android/.kotlin/、mobile/android/.cxx/、.flutter-plugins-dependencies、mobile/android/local.properties，以及自动生成的 GeneratedPluginRegistrant.java。
-- mobile/.vscode/settings.json（包含本机 Flutter SDK 路径）；通用的 launch.json 可保留。
-- 真实数据库备份、用户资料、审核附件、个人 GPS 轨迹和未脱敏截图。sql/schema.sql 是表结构，应保留。
-
 **通过 GitHub 网页直接上传文件时，.gitignore 不会替你筛除文件。** 请先在单独的待上传文件夹中挑选上述内容，保留原目录层级，核对后再上传；无需删除本地开发目录中的文件。tests/*.png 是验证产物，默认排除。若用于展示，可从中挑选已检查的截图，另存到 docs/screenshots/，再添加到 README。
 
 作为应聘作品，建议补充本人实际负责的模块、团队协作范围及 2–3 张脱敏截图或演示视频。项目简介只描述已实现的能力，个人贡献应与实际经历一致。公开课程或团队代码前，请确认学校、团队及素材的使用许可；本仓库暂未指定整体开源许可证，第三方许可仍需遵守。
