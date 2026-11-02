@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.next-local/
+.offline-resume-*/
+.stage4a-runtime/
+.stage4a-local-runtime/
+out/
+.env
+.env.*
+!.env.example
+.vercel/
+.github-upload/
+.claude/
+npm-debug.log*
+*.log
+coverage/
