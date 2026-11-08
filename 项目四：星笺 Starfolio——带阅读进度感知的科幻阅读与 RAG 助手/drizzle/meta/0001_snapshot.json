@@ -1,0 +1,724 @@
+{
+  "id": "a50f90c6-29bb-4976-8e73-eaefe170b106",
+  "prevId": "4f37dd16-d684-4453-8811-b62615c8a4a4",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.chapters": {
+      "name": "chapters",
+      "schema": "",
+      "columns": {
+        "chapter_key": {
+          "name": "chapter_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "issue_work_key": {
+          "name": "issue_work_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content_version": {
+          "name": "content_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title_as_printed": {
+          "name": "title_as_printed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "node_kind": {
+          "name": "node_kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "chapters_issue_work_order_idx": {
+          "name": "chapters_issue_work_order_idx",
+          "columns": [
+            {
+              "expression": "issue_work_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "chapters_issue_work_key_issue_works_issue_work_key_fk": {
+          "name": "chapters_issue_work_key_issue_works_issue_work_key_fk",
+          "tableFrom": "chapters",
+          "tableTo": "issue_works",
+          "columnsFrom": [
+            "issue_work_key"
+          ],
+          "columnsTo": [
+            "issue_work_key"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "chapters_content_version_content_versions_content_version_fk": {
+          "name": "chapters_content_version_content_versions_content_version_fk",
+          "tableFrom": "chapters",
+          "tableTo": "content_versions",
+          "columnsFrom": [
+            "content_version"
+          ],
+          "columnsTo": [
+            "content_version"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.content_blocks": {
+      "name": "content_blocks",
+      "schema": "",
+      "columns": {
+        "block_key": {
+          "name": "block_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "issue_work_key": {
+          "name": "issue_work_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content_version": {
+          "name": "content_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content_hash": {
+          "name": "content_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "chapter_key": {
+          "name": "chapter_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source": {
+          "name": "source",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quality_status": {
+          "name": "quality_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review_items": {
+          "name": "review_items",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "human_review_status": {
+          "name": "human_review_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "content_blocks_version_order_uq": {
+          "name": "content_blocks_version_order_uq",
+          "columns": [
+            {
+              "expression": "content_version",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "content_blocks_issue_work_order_idx": {
+          "name": "content_blocks_issue_work_order_idx",
+          "columns": [
+            {
+              "expression": "issue_work_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "content_blocks_issue_work_key_issue_works_issue_work_key_fk": {
+          "name": "content_blocks_issue_work_key_issue_works_issue_work_key_fk",
+          "tableFrom": "content_blocks",
+          "tableTo": "issue_works",
+          "columnsFrom": [
+            "issue_work_key"
+          ],
+          "columnsTo": [
+            "issue_work_key"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "content_blocks_content_version_content_versions_content_version_fk": {
+          "name": "content_blocks_content_version_content_versions_content_version_fk",
+          "tableFrom": "content_blocks",
+          "tableTo": "content_versions",
+          "columnsFrom": [
+            "content_version"
+          ],
+          "columnsTo": [
+            "content_version"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.content_versions": {
+      "name": "content_versions",
+      "schema": "",
+      "columns": {
+        "content_version": {
+          "name": "content_version",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "issue_work_key": {
+          "name": "issue_work_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_file_sha256": {
+          "name": "source_file_sha256",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parser_version": {
+          "name": "parser_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "normalization_version": {
+          "name": "normalization_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "coverage": {
+          "name": "coverage",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "schema_version": {
+          "name": "schema_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "batch_key": {
+          "name": "batch_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review": {
+          "name": "review",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imported_at": {
+          "name": "imported_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "content_versions_issue_work_idx": {
+          "name": "content_versions_issue_work_idx",
+          "columns": [
+            {
+              "expression": "issue_work_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "content_versions_issue_work_key_issue_works_issue_work_key_fk": {
+          "name": "content_versions_issue_work_key_issue_works_issue_work_key_fk",
+          "tableFrom": "content_versions",
+          "tableTo": "issue_works",
+          "columnsFrom": [
+            "issue_work_key"
+          ],
+          "columnsTo": [
+            "issue_work_key"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.import_batches": {
+      "name": "import_batches",
+      "schema": "",
+      "columns": {
+        "batch_key": {
+          "name": "batch_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "schema_version": {
+          "name": "schema_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "candidate_sha256": {
+          "name": "candidate_sha256",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "manifest": {
+          "name": "manifest",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review": {
+          "name": "review",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "record_count": {
+          "name": "record_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.issue_works": {
+      "name": "issue_works",
+      "schema": "",
+      "columns": {
+        "issue_work_key": {
+          "name": "issue_work_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "issue_key": {
+          "name": "issue_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "work_key": {
+          "name": "work_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title_as_printed": {
+          "name": "title_as_printed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "author_as_printed": {
+          "name": "author_as_printed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "translator_as_printed": {
+          "name": "translator_as_printed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "original_title_as_printed": {
+          "name": "original_title_as_printed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "part_kind": {
+          "name": "part_kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "part_label_as_printed": {
+          "name": "part_label_as_printed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "part_order": {
+          "name": "part_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "issue_order": {
+          "name": "issue_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sequence_key": {
+          "name": "sequence_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "previous_issue_work_key": {
+          "name": "previous_issue_work_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "next_issue_work_key": {
+          "name": "next_issue_work_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "coverage": {
+          "name": "coverage",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_page_range": {
+          "name": "source_page_range",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "evidence": {
+          "name": "evidence",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content_version": {
+          "name": "content_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quality_status": {
+          "name": "quality_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review_items": {
+          "name": "review_items",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "human_review_status": {
+          "name": "human_review_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "issue_works_work_key_idx": {
+          "name": "issue_works_work_key_idx",
+          "columns": [
+            {
+              "expression": "work_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "issue_works_issue_key_issues_issue_key_fk": {
+          "name": "issue_works_issue_key_issues_issue_key_fk",
+          "tableFrom": "issue_works",
+          "tableTo": "issues",
+          "columnsFrom": [
+            "issue_key"
+          ],
+          "columnsTo": [
+            "issue_key"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "issue_works_work_key_works_work_key_fk": {
+          "name": "issue_works_work_key_works_work_key_fk",
+          "tableFrom": "issue_works",
+          "tableTo": "works",
+          "columnsFrom": [
+            "work_key"
+          ],
+          "columnsTo": [
+            "work_key"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.issues": {
+      "name": "issues",
+      "schema": "",
+      "columns": {
+        "issue_key": {
+          "name": "issue_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "published_month": {
+          "name": "published_month",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_file": {
+          "name": "source_file",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quality_status": {
+          "name": "quality_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review_items": {
+          "name": "review_items",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.works": {
+      "name": "works",
+      "schema": "",
+      "columns": {
+        "work_key": {
+          "name": "work_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "original_title_as_printed": {
+          "name": "original_title_as_printed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "author_key": {
+          "name": "author_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "identity_status": {
+          "name": "identity_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quality_status": {
+          "name": "quality_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review_items": {
+          "name": "review_items",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

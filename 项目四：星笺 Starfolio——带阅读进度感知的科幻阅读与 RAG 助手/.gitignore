@@ -1,0 +1,28 @@
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# Local tooling / editor state
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Offline Python and restricted local corpus (never commit)
+.venv/
+__pycache__/
+*.py[cod]
+data/
+local-data/
+offline/output/
+offline/.venv/
+*.pdf

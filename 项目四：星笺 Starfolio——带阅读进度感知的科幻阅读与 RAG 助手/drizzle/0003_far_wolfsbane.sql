@@ -1,0 +1,2 @@
+ALTER TABLE "reading_progress" DROP CONSTRAINT "reading_progress_order_check";--> statement-breakpoint
+ALTER TABLE "reading_progress" ADD CONSTRAINT "reading_progress_order_check" CHECK ("reading_progress"."current_order" > 0 AND "reading_progress"."furthest_order" > 0);
